@@ -1,6 +1,13 @@
 import React from 'react'
 import BreadCrumps from './BreadCrumps'
+import OwlCarousel from "react-owl-carousel";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
+import { options } from '../carouselOptions';
+import { useEffect } from 'react';
+
 function EventDetailes() {
+
   return (
     <div>
       		<section id="breadcrumb-section" className="breadcrumb-section clearfix">
@@ -56,8 +63,17 @@ function EventDetailes() {
 								<h2 className="event-title">Istanbul <strong>Wine Party 2018</strong></h2>
 							</div>
 
-							<div id="event-details-carousel" className="event-details-carousel owl-carousel owl-theme">
-								<div className="item">
+							<div id="event-details-carousel" className="event-details-carousel  owl-theme">
+							<OwlCarousel
+ items={1}
+ className="owl-theme"
+ loop
+ margin={10}
+ nav
+ {...{...options,autoplay:true}}
+ 
+>
+<div className="item">
 									<img src="assets/images/event/event-details-1.jpg" alt="Image_not_found"/>
 								</div>
 								<div className="item">
@@ -66,6 +82,8 @@ function EventDetailes() {
 								<div className="item">
 									<img src="assets/images/event/event-details-3.jpg" alt="Image_not_found"/>
 								</div>
+	</OwlCarousel>
+								
 							</div>
 
 							<div className="event-info-list ul-li clearfix mb-50">
