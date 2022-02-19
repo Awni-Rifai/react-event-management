@@ -7,6 +7,10 @@ import { options } from '../carouselOptions';
 import { useEffect } from 'react';
 
 function EventDetailes() {
+	useEffect(()=>{
+		window.scroll(0,-400)
+
+	},[])
 
   return (
     <div>
