@@ -1,6 +1,30 @@
-import React from "react";
 
-function header() {
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+
+
+function Header({loggedIn}) {
+  
+  const navigate=useNavigate();
+  const [userDropDown,setUserDropDown]=useState(false);
+  const goToLogin=(e)=>{
+    e.preventDefault();
+    localStorage.setItem('prevUrl',window.location.pathname);
+    navigate('login');
+    
+
+  }
+  const goToRegister=(e)=>{
+    e.preventDefault();
+    localStorage.setItem('prevUrl',window.location.pathname);
+    navigate('register');
+
+  }
+  const toggleDropDownUser=()=>{
+    setUserDropDown(prevState=>{
+      return prevState?false:true;
+    })
+    }
   return (
     <div>
       {/* <!-- backtotop - start --> */}
@@ -23,264 +47,8 @@ function header() {
         className="header-section default-header-section auto-hide-header clearfix"
       >
         {/* <!-- header-top - start --> */}
-        <div className="header-top">
-          <div className="container">
-            <div className="row">
-              {/* <!-- basic-contact - start --> */}
-              <div className="col-lg-6">
-                <div className="basic-contact">
-                  <ul>
-                    <li>
-                      <a href="#!">
-                        <i className="fas fa-envelope"></i>
-                        info@harmoni.com
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#!">
-                        <i className="fas fa-phone"></i>
-                        100-2222-9999
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              {/* <!-- basic-contact - end -->
-
-						<!-- register-login-group - start --> */}
-              <div className="col-lg-6">
-                <div className="register-login-group">
-                  <ul>
-                    <li>
-                      <a href="#register-modal" className="register-modal-btn">
-                        <i className="fas fa-user"></i>
-                        Register
-                      </a>
-                      <div
-                        id="register-modal"
-                        className="reglog-modal-wrapper register-modal mfp-hide clearfix"
-                        style={{
-                          backgroundImage:
-                            "url(assets/images/login-modal-bg.jpg)",
-                        }}
-                      >
-                        <div className="overlay-black clearfix">
-                          {/* <!-- leftside-content - start --> */}
-                          <div className="leftside-content">
-                            <div className="site-logo-wrapper mb-80">
-                              <a href="#!" className="logo">
-                                <img
-                                  src="assets/images/2.site-logo.png"
-                                  alt="logo_not_found"
-                                />
-                              </a>
-                            </div>
-                            <div className="register-login-link mb-80">
-                              <ul>
-                                <li>
-                                  <a href="#!">Login</a>
-                                </li>
-                                <li className="active">
-                                  <a href="#!">Register</a>
-                                </li>
-                              </ul>
-                            </div>
-                            <div className="copyright-text">
-                              <p className="m-0">
-                                ©2018{" "}
-                                <a href="#!" className="yellow-color">
-                                  Harmoni.com
-                                </a>{" "}
-                                all right reserved, made with{" "}
-                                <i className="fas fa-heart"></i> by jThemes
-                                Studio{" "}
-                              </p>
-                            </div>
-                          </div>
-                          {/* <!-- leftside-content - end --> */}
-
-                          {/* <!-- rightside-content - start --> */}
-                          <div className="rightside-content text-center">
-                            <div className="mb-30">
-                              <h2 className="form-title title-large white-color">
-                                Account <strong>Register</strong>
-                              </h2>
-                              <span className="form-subtitle white-color">
-                                Have an account? <strong>LOGIN NOW</strong>
-                              </span>
-                            </div>
-
-                            <div className="login-form text-center mb-50">
-                              <form action="#!">
-                                <div className="form-item">
-                                  <input type="email" placeholder="User Name" />
-                                </div>
-                                <div className="form-item">
-                                  <input
-                                    type="password"
-                                    placeholder="Password"
-                                  />
-                                </div>
-                                <div className="form-item">
-                                  <input
-                                    type="email"
-                                    placeholder="Repeat Password"
-                                  />
-                                </div>
-                                <div className="form-item">
-                                  <input
-                                    type="password"
-                                    placeholder="Email Address"
-                                  />
-                                </div>
-                                <div className="human-verification text-left">
-                                  <input type="checkbox" id="imnotarobot" />
-                                  <label for="imnotarobot">
-                                    I'm not a robot
-                                  </label>
-                                  <span className="verification-image">
-                                    <img
-                                      src="assets/images/iamnotrobot.png"
-                                      alt="Image_not_found"
-                                    />
-                                  </span>
-                                </div>
-                                <button type="submit" className="login-btn">
-                                  login now
-                                </button>
-                              </form>
-                            </div>
-
-                            <div className="bottom-text white-color">
-                              <p className="m-0">* Denotes mandatory field.</p>
-                              <p className="m-0">
-                                ** At least one telephone number is required.
-                              </p>
-                            </div>
-                          </div>
-                          {/* <!-- rightside-content - end --> */}
-
-                          <a className="popup-modal-dismiss" href="#!">
-                            <i className="fas fa-times"></i>
-                          </a>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <a href="#login-modal" className="login-modal-btn">
-                        <i className="fas fa-lock"></i>
-                        Login
-                      </a>
-                      <div
-                        id="login-modal"
-                        className="reglog-modal-wrapper mfp-hide clearfix"
-                        style={{
-                          backgroundImage:
-                            "url(assets/images/login-modal-bg.jpg)",
-                        }}
-                      >
-                        <div className="overlay-black clearfix">
-                          {/* <!-- leftside-content - start --> */}
-                          <div className="leftside-content">
-                            <div className="site-logo-wrapper mb-80">
-                              <a href="#!" className="logo">
-                                <img
-                                  src="assets/images/2.site-logo.png"
-                                  alt="logo_not_found"
-                                />
-                              </a>
-                            </div>
-                            <div className="register-login-link mb-80">
-                              <ul>
-                                <li className="active">
-                                  <a href="#!">Login</a>
-                                </li>
-                                <li>
-                                  <a href="#!">Register</a>
-                                </li>
-                              </ul>
-                            </div>
-                            <div className="copyright-text">
-                              <p className="m-0">
-                                ©2018{" "}
-                                <a href="#!" className="yellow-color">
-                                  Harmoni.com
-                                </a>{" "}
-                                all right reserved, made with{" "}
-                                <i className="fas fa-heart"></i> by jThemes
-                                Studio{" "}
-                              </p>
-                            </div>
-                          </div>
-                          {/* <!-- leftside-content - end --> */}
-
-                          {/* <!-- rightside-content - start --> */}
-                          <div className="rightside-content text-center">
-                            <div className="mb-30">
-                              <h2 className="form-title title-large white-color">
-                                Account <strong>Login</strong>
-                              </h2>
-                              <span className="form-subtitle white-color">
-                                Login to our website, or{" "}
-                                <strong>REGISTER</strong>
-                              </span>
-                            </div>
-
-                            <div className="fb-login-btn mb-30">
-                              <a href="#!">
-                                <span className="icon">
-                                  <i className="fab fa-facebook-f"></i>
-                                </span>
-                                login with facebook
-                              </a>
-                            </div>
-
-                            <div className="or-text mb-30">
-                              <span>or sign in</span>
-                            </div>
-
-                            <div className="login-form text-center mb-50">
-                              <form action="#!">
-                                <div className="form-item">
-                                  <input
-                                    type="email"
-                                    placeholder="example@gmail.com"
-                                  />
-                                </div>
-                                <div className="form-item">
-                                  <input
-                                    type="password"
-                                    placeholder="Password"
-                                  />
-                                </div>
-                                <button type="submit" className="login-btn">
-                                  login now
-                                </button>
-                              </form>
-                            </div>
-
-                            <div className="bottom-text white-color">
-                              <p className="m-0">* Denotes mandatory field.</p>
-                              <p className="m-0">
-                                ** At least one telephone number is required.
-                              </p>
-                            </div>
-                          </div>
-                          {/* <!-- rightside-content - end --> */}
-
-                          <a className="popup-modal-dismiss" href="#!">
-                            <i className="fas fa-times"></i>
-                          </a>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              {/* <!-- register-login-group - end --> */}
-            </div>
-          </div>
-        </div>
+        {/** Header Top Component */}
+     
         {/* <!-- header-top - end --> */}
 
         {/* <!-- header-bottom - start --> */}
@@ -365,45 +133,42 @@ function header() {
 
                     {/* <!-- menu-item-list - start --> */}
                     <div className="col-lg-2">
-                      <div className="user-search-btn-group ul-li clearfix">
-                        <ul>
-                          <li>
-                            <a href="#!">
-                              <i className="fas fa-user"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <button
-                              type="button"
-                              className="toggle-overlay search-btn"
-                            >
-                              <i className="fas fa-search"></i>
-                            </button>
-                            {/* <!-- search-body - start --> */}
-                            <div className="search-body">
-                              <div className="search-form">
-                                <form action="#">
-                                  <input
-                                    className="search-input"
-                                    type="search"
-                                    placeholder="Search Here"
-                                  />
-                                  <div className="outer-close toggle-overlay">
-                                    <button
-                                      type="button"
-                                      className="search-close"
-                                    >
-                                      <i className="fas fa-times"></i>
-                                    </button>
-                                  </div>
-                                </form>
-                              </div>
-                            </div>
-                            {/* <!-- search-body - end --> */}
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
+										<div className="user-search-btn-group ul-li clearfix">
+											{/** //! User Btn  */}
+											<ul>
+												<li>
+													<a  onClick={toggleDropDownUser} >
+													<i className="fas fa-lock"></i>
+													{userDropDown &&<div
+                          style={{
+                            background:'linear-gradient(to bottom right, #ff3e00, #ffbe30)',
+                            color:'white',
+                            width:'200%',
+                            fontWeight:'bold'
+                          }
+                          }
+                          >
+													{!loggedIn ?<>
+                            <a onClick={goToLogin}>Login</a>
+													<a onClick={goToRegister}>Register</a>
+                          </>
+                          :
+                          <Link to="profile">Profile</Link>
+                          }
+													</div>}
+													
+													</a>
+													
+													{/*  Profile */}
+													{/* <a >
+														<i className="fas fa-user"></i>
+													</a> */}
+
+												</li>
+												{/**Search Component */}
+											</ul>
+										</div>
+									</div>
                     {/* <!-- menu-item-list - end --> */}
                   </div>
                 </div>
@@ -645,214 +410,24 @@ function header() {
             <div className="login-btn-group">
               <ul>
                 <li>
-                  <a href="#alt-register-modal" className="register-modal-btn">
-                    Register
-                  </a>
-                  <div
-                    id="alt-register-modal"
-                    className="reglog-modal-wrapper register-modal mfp-hide clearfix"
-                    style={{
-                      backgroundImage: "url(assets/images/login-modal-bg.jpg)",
-                    }}
-                  >
-                    <div className="overlay-black clearfix">
-                      {/* <!-- leftside-content - start --> */}
-                      <div className="leftside-content">
-                        <div className="site-logo-wrapper mb-80">
-                          <a href="#!" className="logo">
-                            <img
-                              src="assets/images/2.site-logo.png"
-                              alt="logo_not_found"
-                            />
-                          </a>
-                        </div>
-                        <div className="register-login-link mb-80">
-                          <ul>
-                            <li>
-                              <a href="#!">Login</a>
-                            </li>
-                            <li className="active">
-                              <a href="#!">Register</a>
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="copyright-text">
-                          <p className="m-0">
-                            ©2018{" "}
-                            <a href="#!" className="yellow-color">
-                              Harmoni.com
-                            </a>{" "}
-                            all right reserved, made with{" "}
-                            <i className="fas fa-heart"></i> by jThemes Studio{" "}
-                          </p>
-                        </div>
-                      </div>
-                      {/* <!-- leftside-content - end --> */}
-
-                      {/* <!-- rightside-content - start --> */}
-                      <div className="rightside-content text-center">
-                        <div className="mb-30">
-                          <h2 className="form-title title-large white-color">
-                            Account <strong>Register</strong>
-                          </h2>
-                          <span className="form-subtitle white-color">
-                            Have an account? <strong>LOGIN NOW</strong>
-                          </span>
-                        </div>
-
-                        <div className="login-form text-center mb-50">
-                          <form action="#!">
-                            <div className="form-item">
-                              <input type="email" placeholder="User Name" />
-                            </div>
-                            <div className="form-item">
-                              <input type="password" placeholder="Password" />
-                            </div>
-                            <div className="form-item">
-                              <input
-                                type="email"
-                                placeholder="Repeat Password"
-                              />
-                            </div>
-                            <div className="form-item">
-                              <input
-                                type="password"
-                                placeholder="Email Address"
-                              />
-                            </div>
-                            <div className="human-verification text-left">
-                              <input type="checkbox" id="alt-imnotarobot" />
-                              <label for="alt-imnotarobot">
-                                I'm not a robot
-                              </label>
-                              <span className="verification-image">
-                                <img
-                                  src="assets/images/iamnotrobot.png"
-                                  alt="Image_not_found"
-                                />
-                              </span>
-                            </div>
-                            <button type="submit" className="login-btn">
-                              login now
-                            </button>
-                          </form>
-                        </div>
-
-                        <div className="bottom-text white-color">
-                          <p className="m-0">* Denotes mandatory field.</p>
-                          <p className="m-0">
-                            ** At least one telephone number is required.
-                          </p>
-                        </div>
-                      </div>
-                      {/* <!-- rightside-content - end --> */}
-
-                      <a className="popup-modal-dismiss" href="#!">
-                        <i className="fas fa-times"></i>
-                      </a>
-                    </div>
-                  </div>
-                </li>
+                <a onClick={goToRegister} to='register'>
+                    <i className="fas fa-user"></i>
+                        Register
+                    </a>
+                      
+                      
+              
+                    </li>
+                  
+                     
+              
+               
                 <li>
-                  <a href="#alt-login-modal" className="login-modal-btn">
-                    Login
-                  </a>
-                  <div
-                    id="alt-login-modal"
-                    className="reglog-modal-wrapper mfp-hide clearfix"
-                    style={{
-                      backgroundImage: "url(assets/images/login-modal-bg.jpg)",
-                    }}
-                  >
-                    <div className="overlay-black clearfix">
-                      {/* <!-- leftside-content - start --> */}
-                      <div className="leftside-content">
-                        <div className="site-logo-wrapper mb-80">
-                          <a href="#!" className="logo">
-                            <img
-                              src="assets/images/2.site-logo.png"
-                              alt="logo_not_found"
-                            />
-                          </a>
-                        </div>
-                        <div className="register-login-link mb-80">
-                          <ul>
-                            <li className="active">
-                              <a href="#!">Login</a>
-                            </li>
-                            <li>
-                              <a href="#!">Register</a>
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="copyright-text">
-                          <p className="m-0">
-                            ©2018{" "}
-                            <a href="#!" className="yellow-color">
-                              Harmoni.com
-                            </a>{" "}
-                            all right reserved, made with{" "}
-                            <i className="fas fa-heart"></i> by jThemes Studio{" "}
-                          </p>
-                        </div>
-                      </div>
-                      {/* <!-- leftside-content - end --> */}
-
-                      {/* <!-- rightside-content - start --> */}
-                      <div className="rightside-content text-center">
-                        <div className="mb-30">
-                          <h2 className="form-title title-large white-color">
-                            Account <strong>Login</strong>
-                          </h2>
-                          <span className="form-subtitle white-color">
-                            Login to our website, or <strong>REGISTER</strong>
-                          </span>
-                        </div>
-
-                        <div className="fb-login-btn mb-30">
-                          <a href="#!">
-                            <span className="icon">
-                              <i className="fab fa-facebook-f"></i>
-                            </span>
-                            login with facebook
-                          </a>
-                        </div>
-
-                        <div className="or-text mb-30">
-                          <span>or sign in</span>
-                        </div>
-
-                        <div className="login-form text-center mb-50">
-                          <form action="#!">
-                            <div className="form-item">
-                              <input
-                                type="email"
-                                placeholder="example@gmail.com"
-                              />
-                            </div>
-                            <div className="form-item">
-                              <input type="password" placeholder="Password" />
-                            </div>
-                            <button type="submit" className="login-btn">
-                              login now
-                            </button>
-                          </form>
-                        </div>
-
-                        <div className="bottom-text white-color">
-                          <p className="m-0">* Denotes mandatory field.</p>
-                          <p className="m-0">
-                            ** At least one telephone number is required.
-                          </p>
-                        </div>
-                      </div>
-                      {/* <!-- rightside-content - end --> */}
-
-                      <a className="popup-modal-dismiss" href="#!">
-                        <i className="fas fa-times"></i>
+                <a onClick={goToLogin}>
+                      <i className="fas fa-lock"></i>
+                        Login
                       </a>
-                    </div>
-                  </div>
+            
                 </li>
               </ul>
             </div>
@@ -915,4 +490,4 @@ function header() {
   );
 }
 
-export default header;
+export default Header;
