@@ -1,5 +1,5 @@
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
@@ -10,17 +10,34 @@ import About from "./components/About";
 import  HeaderHome from "./components/HomeSections/Header";
 import Register from "./components/Register";
 import Login from "./components/Login";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { auth } from "./firebase";
+import { onAuthStateChanged,signOut} from "firebase/auth";
 
 
 
 function App() {
+  const navigate=useNavigate();
   const [loggedIn,setLoggedIn]=useState(false);
+  useEffect(()=>{
+    onAuthStateChanged(auth, (user) => {
+      if (user) setLoggedIn(true);
+      else setLoggedIn(false);
+    });
+
+  },[])
+  const logout=async()=>{
+
+    await signOut(auth);
+  }
+
+  
   return (
     <div className="App">
-      <BrowserRouter>
+     
       
-      {window.location.pathname==='/'?<HeaderHome loggedIn={loggedIn}/>:<Header loggedIn={loggedIn} />}
+      {window.location.pathname==='/'?<HeaderHome logout={logout} loggedIn={loggedIn}/>:<Header loggedIn={loggedIn} logout={logout} />}
         
         <Routes>
         <Route path="/" element={<Home />}/>
@@ -33,7 +50,7 @@ function App() {
         <Route path="/About" element={<About/>}/>
         </Routes>
         <Footer />
-      </BrowserRouter>
+      
     </div>
   );
 }

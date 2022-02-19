@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 
-function Header({loggedIn}) {
+function Header({loggedIn,logout}) {
   
   const navigate=useNavigate();
   const [userDropDown,setUserDropDown]=useState(false);
@@ -153,7 +153,10 @@ function Header({loggedIn}) {
 													<a onClick={goToRegister}>Register</a>
                           </>
                           :
-                          <Link to="profile">Profile</Link>
+                          <>
+                            <Link to="profile">Profile</Link>
+                            <a onClick={logout}>Logout</a>
+                          </>
                           }
 													</div>}
 													

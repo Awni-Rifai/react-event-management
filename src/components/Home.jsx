@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 // import Header from './HomeSections/Header';
 import Slider from './HomeSections/Slider';
 import EventAdvertisement from './HomeSections/EventAdvertisement';
@@ -12,7 +12,13 @@ import EventsHome from './HomeSections/EventsHome';
 import NewsHome from './HomeSections/NewsHome';
 import SponserHome from './HomeSections/SponserHome';
 import MapHome from './HomeSections/MapHome';
+
+
 function Home() {
+  useEffect(()=>{
+    
+
+  },[])
   return (
     <div>
         {/* <Header/> */}

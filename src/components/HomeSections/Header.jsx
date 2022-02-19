@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-function HeaderHome({loggedIn}) {
+function HeaderHome({loggedIn,logout}) {
   const [userDropDown, setUserDropDown] = useState(false);
   const [navBarBackgroundColor, setNavBarBackgroundColor] = useState(false);
   useEffect(() => {
@@ -41,7 +41,7 @@ function HeaderHome({loggedIn}) {
       {/* <!-- backtotop - end --> */}
 
       {/* <!-- preloader - start --> */}
-      <div id="preloader"></div>
+      {/* <div id="preloader"></div> */}
       {/* <!-- preloader - end --> */}
 
       {/* <!-- header-section - start */}
@@ -229,7 +229,10 @@ function HeaderHome({loggedIn}) {
                                       <a onClick={goToRegister}>Register</a>
                                     </>
                                   ) : (
+									  <>
                                     <Link to="profile">Profile</Link>
+									<a onClick={logout}>Logout</a>
+									</>
                                   )}
                                 </div>
                               )}
