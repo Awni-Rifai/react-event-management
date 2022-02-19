@@ -7,18 +7,20 @@ import EventDetailes from "./components/EventDetailes";
 import EventsList from "./components/EventsList";
 import Booking from "./components/Booking";
 import About from "./components/About";
+import  HeaderHome from "./components/HomeSections/Header";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Header />
+      {window.location.pathname==='/'?<HeaderHome/>:<Header />}
+        
         <Routes>
-        <Route path="/" element={<Home />} forceRefresh={true} />
-        <Route path="/detailes" element={<EventDetailes/>} forceRefresh={true} />
-        <Route path="/List" element={<EventsList/>} forceRefresh={true} />
-        <Route path="/Booking" element={<Booking/>} forceRefresh={true} />
-        <Route path="/About" element={<About/>} forceRefresh={true} />
+        <Route path="/" element={<Home />}/>
+        <Route path="/details" element={<EventDetailes/>}/>
+        <Route path="/List" element={<EventsList/>}/>
+        <Route path="/Booking" element={<Booking/>}/>
+        <Route path="/About" element={<About/>}/>
         </Routes>
         <Footer />
       </BrowserRouter>

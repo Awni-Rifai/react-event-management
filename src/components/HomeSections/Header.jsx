@@ -1,6 +1,15 @@
-import React from 'react'
+import { useEffect, useState } from "react";
 
-function Header() {
+function HeaderHome() {
+	const [navBarBackgroundColor,setNavBarBackgroundColor]=useState(false);
+	useEffect(()=>{
+		window.addEventListener("scroll", handleScroll);
+	},[]);
+	const handleScroll=()=>{
+		if (window.pageYOffset > 0)setNavBarBackgroundColor(true);
+		else setNavBarBackgroundColor(false);
+	}
+	
   return (
     <div>
 		{/* <!-- backtotop - start --> */}
@@ -21,7 +30,7 @@ function Header() {
 
 		{/* <!-- header-section - start */}
 		{/* ================================================== --> */}
-		<header id="header-section" className="header-section sticky-header-section not-stuck clearfix">
+		<header style={{backgroundColor:navBarBackgroundColor?'rgba(0,0,0,1)':'initial'}} id="header-section" className="header-section sticky-header-section not-stuck clearfix">
 			{/* <!-- header-bottom - start --> */}
 			<div className="header-bottom">
 				<div className="container">
@@ -655,4 +664,4 @@ function Header() {
   )
 }
 
-export default Header
+export default HeaderHome
