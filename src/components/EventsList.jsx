@@ -1,6 +1,12 @@
-import React from 'react'
+import React from 'react';
+import axios from 'axios'
 
 function EventsList() {
+
+	axios
+	.get("http://localhost/event_managments_mySql/event.php")
+	.then((res) => console.log(res.data));
+
   return (
     <div>
         		{/* <!-- breadcrumb-section - start */}

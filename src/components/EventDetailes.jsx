@@ -1,5 +1,5 @@
 import React from 'react'
-import BreadCrumps from './BreadCrumps'
+// import BreadCrumps from './BreadCrumps'
 function EventDetailes() {
   return (
     <div>
