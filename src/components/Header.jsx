@@ -1,9 +1,4 @@
 
-<<<<<<< HEAD
-
-function header() {
-
-=======
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -30,7 +25,6 @@ function Header({loggedIn}) {
       return prevState?false:true;
     })
     }
->>>>>>> fe0f38812b3db14279e6a7af2a920d0f8d2465e3
   return (
     <div>
       {/* <!-- backtotop - start --> */}
