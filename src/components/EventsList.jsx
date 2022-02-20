@@ -1,32 +1,25 @@
-import React,{ useState,useEffect, Fragment } from 'react';
+import React,{ useState,useEffect, Fragment,Link } from 'react';
 import axios from 'axios';
 
 function EventsList() {
-	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState([])
   
 	useEffect(() => {
 	  const fetchData = async () =>{
-		setLoading(true);
+	
 		try {
 		  const {data: response} = await axios.get('http://localhost/event_managments_mySql/event.php');
 		  setData(response);
 		} catch (error) {
 		  console.error(error.message);
 		}
-		setLoading(false);
+		
 	  }
   
 	  fetchData();
 	}, []);
 
-	const fetchData = ()=>{
-		data.map(item => (
-
-		`<div> ${item.name}</div>`
-		
-				));
-	}
+	
   return (
     <div>
 
@@ -218,7 +211,7 @@ function EventsList() {
 										
 										</div>
 										<div className='mt-3'>
-											<a href="#!" className="tickets-details-btn">
+											<a className="tickets-details-btn">
 														tickets & details
 													</a>
 											</div>
