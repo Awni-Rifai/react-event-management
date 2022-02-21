@@ -1,9 +1,36 @@
-import React, { useEffect } from 'react'
+import React,{ useState,useEffect, Fragment } from 'react';
+import {Link} from "react-router-dom";
+import axios from 'axios';
 
 function EventsList() {
+	const [data, setData] = useState([])
+  
+	useEffect(() => {
+	  const fetchData = async () =>{
 	
+		try {
+		  const {data: response} = await axios.get('http://localhost/event_managments_mySql/event.php');
+		  setData(response);
+
+		} catch (error) {
+		  console.error(error.message);
+		}
+	  }
+  
+	  fetchData();
+	 
+	}, []);
+
+ const goDetails = (id)=>{
+  localStorage.setItem('event_id',id);
+ localStorage.setItem('events',JSON.stringify(data));
+ 
+
+  console.log(localStorage.getItem('event_id'))
+	}
   return (
     <div>
+
         		{/* <!-- breadcrumb-section - start */}
 		{/* ================================================== --> */}
 		<section id="breadcrumb-section" className="breadcrumb-section clearfix">
@@ -44,9 +71,10 @@ function EventsList() {
 
 		{/* <!-- event-search-section - start */}
 		{/* ================================================== --> */}
-		<section id="event-search-section" className="event-search-section clearfix" style={{backgroundImage: 'url(assets/images/special-offer-bg.png)'}}>
+		<section id="event-search-section" 
+		className="event-search-section clearfix" style={{backgroundImage: 'url(assets/images/special-offer-bg.png)'}}>
 			<div className="container">
-				<div className="row">
+				<div className="row col-12">
 
 					{/* <!-- section-title - start --> */}
 					<div className="col-lg-4 col-md-12 col-sm-12">
@@ -69,15 +97,7 @@ function EventsList() {
 											<input type="search" placeholder="Event name,location,etc"/>
 										</div>
 									</li>
-									<li>
-										<span className="title">event category</span>
-										<select id="event-category-select">
-											<option selected="">Conference</option>
-											<option value="1">Option 1</option>
-											<option value="2">Option 2</option>
-											<option value="3">Option 3</option>
-										</select>
-									</li>
+							
 									<li>
 										<button type="submit" className="submit-btn">search event now</button>
 									</li>
@@ -105,56 +125,11 @@ function EventsList() {
 				<div className="row">
 
 					{/* <!-- sidebar-section - start --> */}
-					<div className="col-lg-3 col-md-12 col-sm-12">
-						<div className="sidebar-section">
-
-							{/* <!-- Add to Calendar - start --> */}
-							<div title="Add to Calendar" className="addeventatc">
-								Add to Calendar
-								<span className="start">06/18/2015 09:00 AM</span>
-								<span className="end">06/18/2015 11:00 AM</span>
-								<span className="timezone">Europe/Paris</span>
-								<span className="title">Summary of the event</span>
-								<span className="description">Description of the event</span>
-								<span className="location">Location of the event</span>
-								<span className="organizer">Organizer</span>
-								<span className="organizer_email">Organizer e-mail</span>
-								<span className="all_day_event">false</span>
-								<span className="date_format">MM/DD/YYYY</span>
-							</div>
-							{/* <!-- Add to Calendar - end --> */}
-
-							{/* <!-- map-wrapper - start --> */}
-							<div className="map-wrapper mb-30">
-
-								<h2 className="title-small default-color mb-30">Google Map Search</h2>
-
-								<div id="google-map">
-									<div id="googleMaps" className="google-map-container"></div>
-								</div>
-
-							</div>
-							{/* <!-- map-wrapper - end --> */}
-
-							{/* <!-- spacial-event-wrapper - start --> */}
-							<div className="spacial-event-wrapper text-center" style={{backgroundImage: 'url(assets/images/spacial-event-bg.jpg)'}}>
-								<div className="overlay-black">
-									<p className="sub-title white-color mb-30">26 DECEMBER 2018</p>
-									<h2 className="title-large white-color mb-30">
-										AMSTERDAM
-										<strong className="yellow-color">PHP CONFERENCE</strong>
-									</h2>
-									<a href="#!" className="custom-btn">booking ticket</a>
-								</div>
-							</div>
-							{/* <!-- spacial-event-wrapper - end --> */}
-							
-						</div>
-					</div>
+				
 					{/* <!-- sidebar-section - end --> */}
 
 					{/* <!-- - start --> */}
-					<div className="col-lg-9 col-md-12 col-sm-12">
+					<div className="col-lg-12 col-md-12 col-sm-12">
 
 						<div className="search-result-form">
 							<form action="#!">
@@ -192,40 +167,42 @@ function EventsList() {
 
 						<div className="tab-content">
 							<div id="list-style" className="tab-pane fade in active show">
+							
 
 								{/* <!-- event-item - start --> */}
+								{data.map(item => (
 								<div className="event-list-item clearfix">
 
 									{/* <!-- event-image - start --> */}
+									
+							<Fragment>
 									<div className="event-image">
 										<div className="post-date">
-											<span className="date">26</span>
-											<small className="month">june</small>
+											<span className="date">{item.event_time.slice(0,3)}</span>
+											<small className="month">{item.event_time.slice(3,6)}</small>
 										</div>
-										<img src="assets/images/event/event-1.jpg" alt="Image_not_found"/>
+										<img src={item.image} alt="Image_not_found"/>
 									</div>
-									{/* <!-- event-image - end --> */}
-
-									{/* <!-- event-content - start --> */}
+								
 									<div className="event-content">
 										<div className="event-title mb-15">
 											<h3 className="title">
-												Barcelona <strong>Food truck Festival 2018</strong>
+												Barcelona <strong><span>{item.name}</span></strong>
 											</h3>
-											<span className="ticket-price yellow-color">Tickets from $52</span>
+											<span className="ticket-price yellow-color"><span>${item.price}</span></span>
 										</div>
-										<p className="discription-text mb-30">
-											Lorem ipsum dollor site amet the best  consectuer diam nerdistin adipiscing elites sed diam nonummy nibh the ebest uismod delgas tincidunt ut laoreet dolore magna...
-										</p>
+										{/* <p className="discription-text mb-30">
+							            {item.description}
+										</p> */}
 										<div className="event-info-list ul-li clearfix">
 											<ul>
 												<li>
 													<span className="icon">
-														<i className="fas fa-microphone"></i>
+														<i className="fas fa-microphone"></i>,
 													</span>
 													<div className="info-content">
-														<small>Speaker</small>
-														<h3>jenny juis</h3>
+														<small> Presented by :  </small>
+														<h3>{item.speaker}</h3>
 													</div>
 												</li>
 												<li>
@@ -234,250 +211,27 @@ function EventsList() {
 													</span>
 													<div className="info-content">
 														<small>Max Seats</small>
-														<h3>2,250 seats</h3>
+														<h3>{item.seat}</h3>
 													</div>
 												</li>
-												<li>
-													<a href="#!" className="tickets-details-btn">
-														tickets & details
-													</a>
-												</li>
+										
 											</ul>
+										
 										</div>
+										<div className='mt-3'>
+										<Link onClick={()=>goDetails(item.id)} to="/details" className="tickets-details-btn">
+													tickets & details
+												</Link>
+											</div>
 									</div>
-									{/* <!-- event-content - end --> */}
+									</Fragment>
+
+								
 
 								</div>
-								{/* <!-- event-item - end --> */}
+								
 
-								{/* <!-- event-item - start --> */}
-								<div className="event-list-item clearfix">
-
-									{/* <!-- event-image - start --> */}
-									<div className="event-image">
-										<div className="post-date">
-											<span className="date">26</span>
-											<small className="month">june</small>
-										</div>
-										<img src="assets/images/event/event-2.jpg" alt="Image_not_found"/>
-									</div>
-									{/* <!-- event-image - end --> */}
-
-									{/* <!-- event-content - start --> */}
-									<div className="event-content">
-										<div className="event-title mb-15">
-											<h3 className="title">
-												Barcelona <strong>Food truck Festival 2018</strong>
-											</h3>
-											<span className="ticket-price yellow-color">Tickets from $52</span>
-										</div>
-										<p className="discription-text mb-30">
-											Lorem ipsum dollor site amet the best  consectuer diam nerdistin adipiscing elites sed diam nonummy nibh the ebest uismod delgas tincidunt ut laoreet dolore magna...
-										</p>
-										<div className="event-info-list ul-li clearfix">
-											<ul>
-												<li>
-													<span className="icon">
-														<i className="fas fa-microphone"></i>
-													</span>
-													<div className="info-content">
-														<small>Speaker</small>
-														<h3>jenny juis</h3>
-													</div>
-												</li>
-												<li>
-													<span className="icon">
-														<i className="fas fa-ticket-alt"></i>
-													</span>
-													<div className="info-content">
-														<small>Max Seats</small>
-														<h3>2,250 seats</h3>
-													</div>
-												</li>
-												<li>
-													<a href="#!" className="tickets-details-btn">
-														tickets & details
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-									{/* <!-- event-content - end --> */}
-
-								</div>
-								{/* <!-- event-item - end --> */}
-
-								{/* <!-- event-item - start --> */}
-								<div className="event-list-item clearfix">
-
-									{/* <!-- event-image - start --> */}
-									<div className="event-image">
-										<div className="post-date">
-											<span className="date">26</span>
-											<small className="month">june</small>
-										</div>
-										<img src="assets/images/event/event-3.jpg" alt="Image_not_found"/>
-									</div>
-									{/* <!-- event-image - end --> */}
-
-									{/* <!-- event-content - start --> */}
-									<div className="event-content">
-										<div className="event-title mb-15">
-											<h3 className="title">
-												Barcelona <strong>Food truck Festival 2018</strong>
-											</h3>
-											<span className="ticket-price yellow-color">Tickets from $52</span>
-										</div>
-										<p className="discription-text mb-30">
-											Lorem ipsum dollor site amet the best  consectuer diam nerdistin adipiscing elites sed diam nonummy nibh the ebest uismod delgas tincidunt ut laoreet dolore magna...
-										</p>
-										<div className="event-info-list ul-li clearfix">
-											<ul>
-												<li>
-													<span className="icon">
-														<i className="fas fa-microphone"></i>
-													</span>
-													<div className="info-content">
-														<small>Speaker</small>
-														<h3>jenny juis</h3>
-													</div>
-												</li>
-												<li>
-													<span className="icon">
-														<i className="fas fa-ticket-alt"></i>
-													</span>
-													<div className="info-content">
-														<small>Max Seats</small>
-														<h3>2,250 seats</h3>
-													</div>
-												</li>
-												<li>
-													<a href="#!" className="tickets-details-btn">
-														tickets & details
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-									{/* <!-- event-content - end --> */}
-
-								</div>
-								{/* <!-- event-item - end --> */}
-
-								{/* <!-- event-item - start --> */}
-								<div className="event-list-item clearfix">
-
-									{/* <!-- event-image - start --> */}
-									<div className="event-image">
-										<div className="post-date">
-											<span className="date">26</span>
-											<small className="month">june</small>
-										</div>
-										<img src="assets/images/event/event-4.jpg" alt="Image_not_found"/>
-									</div>
-									{/* <!-- event-image - end --> */}
-
-									{/* <!-- event-content - start --> */}
-									<div className="event-content">
-										<div className="event-title mb-15">
-											<h3 className="title">
-												Barcelona <strong>Food truck Festival 2018</strong>
-											</h3>
-											<span className="ticket-price yellow-color">Tickets from $52</span>
-										</div>
-										<p className="discription-text mb-30">
-											Lorem ipsum dollor site amet the best  consectuer diam nerdistin adipiscing elites sed diam nonummy nibh the ebest uismod delgas tincidunt ut laoreet dolore magna...
-										</p>
-										<div className="event-info-list ul-li clearfix">
-											<ul>
-												<li>
-													<span className="icon">
-														<i className="fas fa-microphone"></i>
-													</span>
-													<div className="info-content">
-														<small>Speaker</small>
-														<h3>jenny juis</h3>
-													</div>
-												</li>
-												<li>
-													<span className="icon">
-														<i className="fas fa-ticket-alt"></i>
-													</span>
-													<div className="info-content">
-														<small>Max Seats</small>
-														<h3>2,250 seats</h3>
-													</div>
-												</li>
-												<li>
-													<a href="#!" className="tickets-details-btn">
-														tickets & details
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-									{/* <!-- event-content - end --> */}
-
-								</div>
-								{/* <!-- event-item - end --> */}
-
-								{/* <!-- event-item - start --> */}
-								<div className="event-list-item clearfix">
-
-									{/* <!-- event-image - start --> */}
-									<div className="event-image">
-										<div className="post-date">
-											<span className="date">26</span>
-											<small className="month">june</small>
-										</div>
-										<img src="assets/images/event/event-5.jpg" alt="Image_not_found"/>
-									</div>
-									{/* <!-- event-image - end --> */}
-
-									{/* <!-- event-content - start --> */}
-									<div className="event-content">
-										<div className="event-title mb-15">
-											<h3 className="title">
-												Barcelona <strong>Food truck Festival 2018</strong>
-											</h3>
-											<span className="ticket-price yellow-color">Tickets from $52</span>
-										</div>
-										<p className="discription-text mb-30">
-											Lorem ipsum dollor site amet the best  consectuer diam nerdistin adipiscing elites sed diam nonummy nibh the ebest uismod delgas tincidunt ut laoreet dolore magna...
-										</p>
-										<div className="event-info-list ul-li clearfix">
-											<ul>
-												<li>
-													<span className="icon">
-														<i className="fas fa-microphone"></i>
-													</span>
-													<div className="info-content">
-														<small>Speaker</small>
-														<h3>jenny juis</h3>
-													</div>
-												</li>
-												<li>
-													<span className="icon">
-														<i className="fas fa-ticket-alt"></i>
-													</span>
-													<div className="info-content">
-														<small>Max Seats</small>
-														<h3>2,250 seats</h3>
-													</div>
-												</li>
-												<li>
-													<a href="#!" className="tickets-details-btn">
-														tickets & details
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-									{/* <!-- event-content - end --> */}
-
-								</div>
-								{/* <!-- event-item - end --> */}
-
+								))}
 								<div className="pagination ul-li clearfix">
 									<ul>
 										<li className="page-item prev-item">
@@ -498,17 +252,16 @@ function EventsList() {
 
 							<div id="grid-style" className="tab-pane fade">
 								<div className="row justify-content-center">
-
-									{/* <!-- event-grid-item - start --> */}
+								{data.map(item => (
 									<div className="col-lg-6 col-md-6 col-sm-12">
 										<div className="event-grid-item">
 											{/* <!-- event-image - start --> */}
 											<div className="event-image">
 												<div className="post-date">
-													<span className="date">26</span>
-													<small className="month">june</small>
+													<span className="date">{item.event_time.slice(0,3)}</span>
+													<small className="month">{item.event_time.slice(3,6)}</small>
 												</div>
-												<img src="assets/images/event/1.event-grid.jpg" alt="Image_not_found"/>
+												<img src={item.image} width="100%" alt="Image_not_found"/>
 											</div>
 											{/* <!-- event-image - end --> */}
 
@@ -516,9 +269,9 @@ function EventsList() {
 											<div className="event-content">
 												<div className="event-title mb-30">
 													<h3 className="title">
-														Barcelona Food Truck Festival 2018-2019
+													{item.name}
 													</h3>
-													<span className="ticket-price yellow-color">Tickets from $52</span>
+													<span className="ticket-price yellow-color">${item.price}</span>
 												</div>
 												<div className="event-post-meta ul-li-block mb-30">
 													<ul>
@@ -526,254 +279,32 @@ function EventsList() {
 															<span className="icon">
 																<i className="far fa-clock"></i>
 															</span>
-															Start 20:00pm - 22:00pm
+															{item.start_time} - {item.end_time}
+														</li>
+													
+														<li>
+															<span className="icon">
+																<i className="fas fa-map-marker-alt"></i>
+															</span>
+															{item.city}
 														</li>
 														<li>
 															<span className="icon">
 																<i className="fas fa-map-marker-alt"></i>
 															</span>
-															Manhattan, New York
+															{item.location}
 														</li>
 													</ul>
 												</div>
-												<a href="#!" className="tickets-details-btn">
+												<Link onClick={()=>goDetails(item.id)} to="/details" className="tickets-details-btn">
 													tickets & details
-												</a>
+												</Link>
 											</div>
 											{/* <!-- event-content - end --> */}
 										</div>
 									</div>
-									{/* <!-- event-grid-item - end --> */}
-
-									{/* <!-- event-grid-item - start --> */}
-									<div className="col-lg-6 col-md-6 col-sm-12">
-										<div className="event-grid-item">
-											{/* <!-- event-image - start --> */}
-											<div className="event-image">
-												<div className="post-date">
-													<span className="date">26</span>
-													<small className="month">june</small>
-												</div>
-												<img src="assets/images/event/2.event-grid.jpg" alt="Image_not_found"/>
-											</div>
-											{/* <!-- event-image - end --> */}
-
-											{/* <!-- event-content - start --> */}
-											<div className="event-content">
-												<div className="event-title mb-30">
-													<h3 className="title">
-														Barcelona Food Truck Festival 2018-2019
-													</h3>
-													<span className="ticket-price yellow-color">Tickets from $52</span>
-												</div>
-												<div className="event-post-meta ul-li-block mb-30">
-													<ul>
-														<li>
-															<span className="icon">
-																<i className="far fa-clock"></i>
-															</span>
-															Start 20:00pm - 22:00pm
-														</li>
-														<li>
-															<span className="icon">
-																<i className="fas fa-map-marker-alt"></i>
-															</span>
-															Manhattan, New York
-														</li>
-													</ul>
-												</div>
-												<a href="#!" className="tickets-details-btn">
-													tickets & details
-												</a>
-											</div>
-											{/* <!-- event-content - end --> */}
-										</div>
-									</div>
-									{/* <!-- event-grid-item - end --> */}
-
-									{/* <!-- event-grid-item - start --> */}
-									<div className="col-lg-6 col-md-6 col-sm-12">
-										<div className="event-grid-item">
-											{/* <!-- event-image - start --> */}
-											<div className="event-image">
-												<div className="post-date">
-													<span className="date">26</span>
-													<small className="month">june</small>
-												</div>
-												<img src="assets/images/event/1.event-grid.jpg" alt="Image_not_found"/>
-											</div>
-											{/* <!-- event-image - end --> */}
-
-											{/* <!-- event-content - start --> */}
-											<div className="event-content">
-												<div className="event-title mb-30">
-													<h3 className="title">
-														Barcelona Food Truck Festival 2018-2019
-													</h3>
-													<span className="ticket-price yellow-color">Tickets from $52</span>
-												</div>
-												<div className="event-post-meta ul-li-block mb-30">
-													<ul>
-														<li>
-															<span className="icon">
-																<i className="far fa-clock"></i>
-															</span>
-															Start 20:00pm - 22:00pm
-														</li>
-														<li>
-															<span className="icon">
-																<i className="fas fa-map-marker-alt"></i>
-															</span>
-															Manhattan, New York
-														</li>
-													</ul>
-												</div>
-												<a href="#!" className="tickets-details-btn">
-													tickets & details
-												</a>
-											</div>
-											{/* <!-- event-content - end --> */}
-										</div>
-									</div>
-									{/* <!-- event-grid-item - end --> */}
-
-									{/* <!-- event-grid-item - start --> */}
-									<div className="col-lg-6 col-md-6 col-sm-12">
-										<div className="event-grid-item">
-											{/* <!-- event-image - start --> */}
-											<div className="event-image">
-												<div className="post-date">
-													<span className="date">26</span>
-													<small className="month">june</small>
-												</div>
-												<img src="assets/images/event/2.event-grid.jpg" alt="Image_not_found"/>
-											</div>
-											{/* <!-- event-image - end --> */}
-
-											{/* <!-- event-content - start --> */}
-											<div className="event-content">
-												<div className="event-title mb-30">
-													<h3 className="title">
-														Barcelona Food Truck Festival 2018-2019
-													</h3>
-													<span className="ticket-price yellow-color">Tickets from $52</span>
-												</div>
-												<div className="event-post-meta ul-li-block mb-30">
-													<ul>
-														<li>
-															<span className="icon">
-																<i className="far fa-clock"></i>
-															</span>
-															Start 20:00pm - 22:00pm
-														</li>
-														<li>
-															<span className="icon">
-																<i className="fas fa-map-marker-alt"></i>
-															</span>
-															Manhattan, New York
-														</li>
-													</ul>
-												</div>
-												<a href="#!" className="tickets-details-btn">
-													tickets & details
-												</a>
-											</div>
-											{/* <!-- event-content - end --> */}
-										</div>
-									</div>
-									{/* <!-- event-grid-item - end --> */}
-
-									{/* <!-- event-grid-item - start --> */}
-									<div className="col-lg-6 col-md-6 col-sm-12">
-										<div className="event-grid-item">
-											{/* <!-- event-image - start --> */}
-											<div className="event-image">
-												<div className="post-date">
-													<span className="date">26</span>
-													<small className="month">june</small>
-												</div>
-												<img src="assets/images/event/1.event-grid.jpg" alt="Image_not_found"/>
-											</div>
-											{/* <!-- event-image - end --> */}
-
-											{/* <!-- event-content - start --> */}
-											<div className="event-content">
-												<div className="event-title mb-30">
-													<h3 className="title">
-														Barcelona Food Truck Festival 2018-2019
-													</h3>
-													<span className="ticket-price yellow-color">Tickets from $52</span>
-												</div>
-												<div className="event-post-meta ul-li-block mb-30">
-													<ul>
-														<li>
-															<span className="icon">
-																<i className="far fa-clock"></i>
-															</span>
-															Start 20:00pm - 22:00pm
-														</li>
-														<li>
-															<span className="icon">
-																<i className="fas fa-map-marker-alt"></i>
-															</span>
-															Manhattan, New York
-														</li>
-													</ul>
-												</div>
-												<a href="#!" className="tickets-details-btn">
-													tickets & details
-												</a>
-											</div>
-											{/* <!-- event-content - end --> */}
-										</div>
-									</div>
-									{/* <!-- event-grid-item - end --> */}
-
-									{/* <!-- event-grid-item - start --> */}
-									<div className="col-lg-6 col-md-6 col-sm-12">
-										<div className="event-grid-item">
-											{/* <!-- event-image - start --> */}
-											<div className="event-image">
-												<div className="post-date">
-													<span className="date">26</span>
-													<small className="month">june</small>
-												</div>
-												<img src="assets/images/event/2.event-grid.jpg" alt="Image_not_found"/>
-											</div>
-											{/* <!-- event-image - end --> */}
-
-											{/* <!-- event-content - start --> */}
-											<div className="event-content">
-												<div className="event-title mb-30">
-													<h3 className="title">
-														Barcelona Food Truck Festival 2018-2019
-													</h3>
-													<span className="ticket-price yellow-color">Tickets from $52</span>
-												</div>
-												<div className="event-post-meta ul-li-block mb-30">
-													<ul>
-														<li>
-															<span className="icon">
-																<i className="far fa-clock"></i>
-															</span>
-															Start 20:00pm - 22:00pm
-														</li>
-														<li>
-															<span className="icon">
-																<i className="fas fa-map-marker-alt"></i>
-															</span>
-															Manhattan, New York
-														</li>
-													</ul>
-												</div>
-												<a href="#!" className="tickets-details-btn">
-													tickets & details
-												</a>
-											</div>
-											{/* <!-- event-content - end --> */}
-										</div>
-									</div>
-									{/* <!-- event-grid-item - end --> */}
+									))}
+									
 
 									{/* <!-- pagination - start --> */}
 									<div className="pagination ul-li clearfix">

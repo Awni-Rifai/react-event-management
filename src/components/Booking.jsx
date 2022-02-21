@@ -1,6 +1,7 @@
 import React from 'react'
 
 function Booking() {
+
   return (
     <div>
         	{/* <!-- breadcrumb-section - start */}
