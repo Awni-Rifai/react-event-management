@@ -1,4 +1,5 @@
-import React,{ useState,useEffect, Fragment,Link } from 'react';
+import React,{ useState,useEffect, Fragment } from 'react';
+import {Link} from "react-router-dom";
 import axios from 'axios';
 
 function EventsList() {
@@ -10,16 +11,23 @@ function EventsList() {
 		try {
 		  const {data: response} = await axios.get('http://localhost/event_managments_mySql/event.php');
 		  setData(response);
+
 		} catch (error) {
 		  console.error(error.message);
 		}
-		
 	  }
   
 	  fetchData();
+	 
 	}, []);
 
-	
+ const goDetails = (id)=>{
+  localStorage.setItem('event_id',id);
+ localStorage.setItem('events',JSON.stringify(data));
+ 
+
+  console.log(localStorage.getItem('event_id'))
+	}
   return (
     <div>
 
@@ -173,7 +181,7 @@ function EventsList() {
 											<span className="date">{item.event_time.slice(0,3)}</span>
 											<small className="month">{item.event_time.slice(3,6)}</small>
 										</div>
-										<img src="assets/images/event/event-2.jpg" alt="Image_not_found"/>
+										<img src={item.image} alt="Image_not_found"/>
 									</div>
 								
 									<div className="event-content">
@@ -183,9 +191,9 @@ function EventsList() {
 											</h3>
 											<span className="ticket-price yellow-color"><span>${item.price}</span></span>
 										</div>
-										<p className="discription-text mb-30">
+										{/* <p className="discription-text mb-30">
 							            {item.description}
-										</p>
+										</p> */}
 										<div className="event-info-list ul-li clearfix">
 											<ul>
 												<li>
@@ -193,7 +201,7 @@ function EventsList() {
 														<i className="fas fa-microphone"></i>,
 													</span>
 													<div className="info-content">
-														<small> Speaker </small>
+														<small> Hosted by :  </small>
 														<h3>{item.speaker}</h3>
 													</div>
 												</li>
@@ -211,9 +219,9 @@ function EventsList() {
 										
 										</div>
 										<div className='mt-3'>
-											<a className="tickets-details-btn">
-														tickets & details
-													</a>
+										<Link onClick={()=>goDetails(item.id)} to="/details" className="tickets-details-btn">
+													tickets & details
+												</Link>
 											</div>
 									</div>
 									</Fragment>
@@ -253,7 +261,7 @@ function EventsList() {
 													<span className="date">{item.event_time.slice(0,3)}</span>
 													<small className="month">{item.event_time.slice(3,6)}</small>
 												</div>
-												<img src="assets/images/event/1.event-grid.jpg" alt="Image_not_found"/>
+												<img src={item.image} width="100%" alt="Image_not_found"/>
 											</div>
 											{/* <!-- event-image - end --> */}
 
@@ -273,6 +281,13 @@ function EventsList() {
 															</span>
 															{item.start_time} - {item.end_time}
 														</li>
+													
+														<li>
+															<span className="icon">
+																<i className="fas fa-map-marker-alt"></i>
+															</span>
+															{item.city}
+														</li>
 														<li>
 															<span className="icon">
 																<i className="fas fa-map-marker-alt"></i>
@@ -281,9 +296,9 @@ function EventsList() {
 														</li>
 													</ul>
 												</div>
-												<a href="#!" className="tickets-details-btn">
+												<Link onClick={()=>goDetails(item.id)} to="/details" className="tickets-details-btn">
 													tickets & details
-												</a>
+												</Link>
 											</div>
 											{/* <!-- event-content - end --> */}
 										</div>
