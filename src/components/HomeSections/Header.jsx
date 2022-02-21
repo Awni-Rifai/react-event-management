@@ -79,11 +79,11 @@ function HeaderHome({loggedIn}) {
                       <div className="menu-item-list ul-li clearfix">
                         <ul>
                           <li className="menu-item-has-children active">
-                            <a href="#!">home</a>
+                            <Link to="/">home</Link>
                             <ul className="sub-menu">
-                              <li className="menu-item-has-children">
-                                <a href="index-1.html">home v.1</a>
-                                <ul className="sub-menu">
+                              {/* <li className="menu-item-has-children">
+                                <a href="index-1.html">home v.1</a> */}
+                                {/* <ul className="sub-menu">
                                   <li>
                                     <a href="#">example v.1.1</a>
                                   </li>
@@ -96,13 +96,13 @@ function HeaderHome({loggedIn}) {
                                   <li>
                                     <a href="#">example v.1.4</a>
                                   </li>
-                                </ul>
-                              </li>
-                              <li className="menu-item-has-children">
-                                <a href="index-2.html" className="active">
-                                  home v.2
-                                </a>
-                                <ul className="sub-menu">
+                                </ul> */}
+                              {/* </li> */}
+                              {/* <li className="menu-item-has-children">
+                                <Link to="/" className="active">
+                                  home
+                                </Link> */}
+                                {/* <ul className="sub-menu">
                                   <li>
                                     <a href="#">example v.2.1</a>
                                   </li>
@@ -112,57 +112,57 @@ function HeaderHome({loggedIn}) {
                                   <li>
                                     <a href="#">example v.2.3</a>
                                   </li>
-                                </ul>
-                              </li>
-                              <li className="menu-item-has-children">
+                                </ul> */}
+                              {/* </li> */}
+                              {/* <li className="menu-item-has-children">
                                 <a href="index-3.html">home v.3</a>
-                                <ul className="sub-menu">
-                                  <li>
+                                <ul className="sub-menu"> */}
+                                  {/* <li>
                                     <a href="#">example v.3.1</a>
-                                  </li>
-                                  <li>
+                                  </li> */}
+                                  {/* <li>
                                     <a href="#">example v.3.2</a>
-                                  </li>
-                                </ul>
-                              </li>
-                              <li className="menu-item-has-children">
+                                  </li> */}
+                                {/* </ul>
+                              </li> */}
+                              {/* <li className="menu-item-has-children">
                                 <a href="index-4.html">home v.4</a>
                                 <ul className="sub-menu">
                                   <li>
                                     <a href="#">example v.4.1</a>
                                   </li>
                                 </ul>
-                              </li>
+                              </li> */}
                             </ul>
                           </li>
                           <li className="menu-item-has-children">
-                            <a href="#!">about</a>
+                            <Link to="/About">about</Link>
                             <ul className="sub-menu">
-                              <li>
+                              {/* <li>
                                 <a href="about.html">about us</a>
-                              </li>
-                              <li>
+                              </li> */}
+                              {/* <li>
                                 <a href="service.html">service</a>
-                              </li>
-                              <li>
+                              </li> */}
+                              {/* <li>
                                 <a href="faq.html">FAQ</a>
-                              </li>
+                              </li> */}
                             </ul>
                           </li>
                           <li className="menu-item-has-children">
-                            <a href="#!">events</a>
+                            <Link to="/List">Events</Link>
                             <ul className="sub-menu">
-                              <li className="menu-item-has-children">
-                                <a href="event-1.html">event List</a>
-                                <ul className="sub-menu">
+                              {/* <li className="menu-item-has-children"> */}
+                                {/* <a href="event-1.html">event List</a> */}
+                                {/* <ul className="sub-menu">
                                   <li>
                                     <a href="event-1-without-sidebar.html">
                                       list without sidebar
                                     </a>
                                   </li>
-                                </ul>
-                              </li>
-                              <li className="menu-item-has-children">
+                                </ul> */}
+                              {/* </li> */}
+                              {/* <li className="menu-item-has-children">
                                 <a href="event-2.html">event Grid</a>
                                 <ul className="sub-menu">
                                   <li>
@@ -171,41 +171,41 @@ function HeaderHome({loggedIn}) {
                                     </a>
                                   </li>
                                 </ul>
-                              </li>
-                              <li>
+                              </li> */}
+                              {/* <li>
                                 <a href="event-details.html">event details</a>
-                              </li>
-                              <li>
+                              </li> */}
+                              {/* <li>
                                 <a href="booking.html">event booking</a>
-                              </li>
+                              </li> */}
                             </ul>
                           </li>
-                          <li className="menu-item-has-children">
+                          {/* <li className="menu-item-has-children">
                             <a href="#!">blogs</a>
-                            <ul className="sub-menu">
-                              <li>
+                            <ul className="sub-menu"> */}
+                              {/* <li>
                                 <a href="blog.html">blog</a>
-                              </li>
-                              <li>
+                              </li> */}
+                              {/* <li>
                                 <a href="blog-details.html">blog details</a>
-                              </li>
-                            </ul>
-                          </li>
-                          <li>
-                            <a href="gallery.html">gallery</a>
-                          </li>
-                          <li>
+                              </li> */}
+                            {/* </ul>
+                          </li> */}
+                          {/* <li>
+                            <a href="gallery.html">Gallery</a>
+                          </li> */}
+                          {/* <li>
                             <a href="speaker.html">speaker</a>
-                          </li>
+                          </li> */}
                           <li className="menu-item-has-children">
                             <a href="#!">contact</a>
                             <ul className="sub-menu">
                               <li>
                                 <a href="contact.html">contact us</a>
                               </li>
-                              <li>
+                              {/* <li>
                                 <a href="404-error.html">404 Error</a>
-                              </li>
+                              </li> */}
                             </ul>
                           </li>
                         </ul>
@@ -308,38 +308,38 @@ function HeaderHome({loggedIn}) {
             <div className="menu-link-list main-pages-links">
               <h2 className="menu-title">all home pages</h2>
               <ul>
-                <li>
+                {/* <li>
                   <a href="index-1.html">
                     <span className="icon">
                       <i className="fas fa-home"></i>
                     </span>
                     Home V.1
                   </a>
-                </li>
+                </li> */}
                 <li className="active">
-                  <a href="index-2.html">
+                  <Link to="/">
                     <span className="icon">
                       <i className="fas fa-home"></i>
                     </span>
-                    Home V.2
-                  </a>
+                    Home
+                  </Link>
                 </li>
-                <li>
+                {/* <li>
                   <a href="index-3.html">
                     <span className="icon">
                       <i className="fas fa-home"></i>
                     </span>
                     Home v.3
                   </a>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <a href="index-4.html">
                     <span className="icon">
                       <i className="fas fa-home"></i>
                     </span>
                     Home v.4
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
             {/* <!-- main-pages-links - end --> */}
@@ -356,21 +356,21 @@ function HeaderHome({loggedIn}) {
                     About Us
                   </a>
                 </li>
-                <li>
+                {/* <li>
                   <a href="service.html">
                     <span className="icon">
                       <i className="fas fa-home"></i>
                     </span>
                     our Services
                   </a>
-                </li>
+                </li> */}
                 <li>
-                  <a href="event-1.html">
+                  <Link to="/list">
                     <span className="icon">
                       <i className="fas fa-home"></i>
                     </span>
-                    event list
-                  </a>
+                    Events Gallery
+                  </Link>
                 </li>
                 <li>
                   <a href="event-2.html">

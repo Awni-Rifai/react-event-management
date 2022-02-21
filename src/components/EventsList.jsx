@@ -132,7 +132,7 @@ function EventsList() {
 					<div className="col-lg-12 col-md-12 col-sm-12">
 
 						<div className="search-result-form">
-							<form action="#!">
+							{/* <form action="#!">
 								<ul>
 
 									<li>
@@ -157,7 +157,7 @@ function EventsList() {
 									</li>
 
 								</ul>
-							</form>
+							</form> */}
 
 							<ul className="nav event-layout-btngroup">
 								<li><a className="active" data-toggle="tab" href="#list-style"><i className="fas fa-th-list"></i></a></li>
@@ -187,7 +187,7 @@ function EventsList() {
 									<div className="event-content">
 										<div className="event-title mb-15">
 											<h3 className="title">
-												Barcelona <strong><span>{item.name}</span></strong>
+												 <strong><span>{item.name}</span></strong>
 											</h3>
 											<span className="ticket-price yellow-color"><span>${item.price}</span></span>
 										</div>
