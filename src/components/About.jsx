@@ -72,13 +72,11 @@ function About() {
 										</h3>
 									</div>
 									<p className="black-color mb-30">
-										Lorem ipsum dollor site amet the best  consectuer adipiscing elites sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat insignia the consectuer adipiscing elit.
-									</p>
+									We understand the challenges of delivering a successful hybrid event and combine our long list of comprehensive abilities in both in-person and virtual events to create a bespoke hybrid event that meets your vision.									</p>
 									<p className="black-color m-0">
 										<strong>
 											<i>
-												Lorem ipsum dollor site amet the best  consectuer adipiscing elites sed diam nonummy nibh euismod.
-											</i>	
+											We help you map your delegate journey and design your event, so that it not only fits your event objectives, but also that of your broader campaign and company objectives.											</i>	
 										</strong>
 									</p>
 								</div>
