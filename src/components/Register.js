@@ -36,7 +36,10 @@ export default function Register() {
 }
     catch(err){
         setLoading(false)
-        setError(err.message);
+       if(err.message?.startsWith('Firebase: Error (auth/user-not-found)')){
+           setError('user not found');
+       }
+       setError('Error in the register;TRY AGAIN');
 
     }
 }

@@ -16,6 +16,8 @@ import MapHome from './HomeSections/MapHome';
 
 function Home() {
   useEffect(()=>{
+    window.scroll(0,-400);
+    
     
 
   },[])

@@ -30,7 +30,13 @@ export default function Login() {
         }
         catch(err){
             setLoading(false);
-            setError(err.message);
+            
+            if(err.message?.startsWith('Firebase: Error (auth/user-not-found)')){
+                setError('user not found');
+            }
+            else if(err.message?.startsWith('Firebase: Error (auth/wrong-password)')) setError('wrong-password');
+            else setError(err.message);
+
         }
       
        
