@@ -80,133 +80,17 @@ function HeaderHome({loggedIn}) {
                         <ul>
                           <li className="menu-item-has-children active">
                             <Link to="/">home</Link>
-                            <ul className="sub-menu">
-                              {/* <li className="menu-item-has-children">
-                                <a href="index-1.html">home v.1</a> */}
-                                {/* <ul className="sub-menu">
-                                  <li>
-                                    <a href="#">example v.1.1</a>
-                                  </li>
-                                  <li>
-                                    <a href="#">example v.1.2</a>
-                                  </li>
-                                  <li>
-                                    <a href="#">example v.1.3</a>
-                                  </li>
-                                  <li>
-                                    <a href="#">example v.1.4</a>
-                                  </li>
-                                </ul> */}
-                              {/* </li> */}
-                              {/* <li className="menu-item-has-children">
-                                <Link to="/" className="active">
-                                  home
-                                </Link> */}
-                                {/* <ul className="sub-menu">
-                                  <li>
-                                    <a href="#">example v.2.1</a>
-                                  </li>
-                                  <li>
-                                    <a href="#">example v.2.2</a>
-                                  </li>
-                                  <li>
-                                    <a href="#">example v.2.3</a>
-                                  </li>
-                                </ul> */}
-                              {/* </li> */}
-                              {/* <li className="menu-item-has-children">
-                                <a href="index-3.html">home v.3</a>
-                                <ul className="sub-menu"> */}
-                                  {/* <li>
-                                    <a href="#">example v.3.1</a>
-                                  </li> */}
-                                  {/* <li>
-                                    <a href="#">example v.3.2</a>
-                                  </li> */}
-                                {/* </ul>
-                              </li> */}
-                              {/* <li className="menu-item-has-children">
-                                <a href="index-4.html">home v.4</a>
-                                <ul className="sub-menu">
-                                  <li>
-                                    <a href="#">example v.4.1</a>
-                                  </li>
-                                </ul>
-                              </li> */}
-                            </ul>
-                          </li>
-                          <li className="menu-item-has-children">
-                            <Link to="/About">about</Link>
-                            <ul className="sub-menu">
-                              {/* <li>
-                                <a href="about.html">about us</a>
-                              </li> */}
-                              {/* <li>
-                                <a href="service.html">service</a>
-                              </li> */}
-                              {/* <li>
-                                <a href="faq.html">FAQ</a>
-                              </li> */}
-                            </ul>
                           </li>
                           <li className="menu-item-has-children">
                             <Link to="/List">Events</Link>
                             <ul className="sub-menu">
-                              {/* <li className="menu-item-has-children"> */}
-                                {/* <a href="event-1.html">event List</a> */}
-                                {/* <ul className="sub-menu">
-                                  <li>
-                                    <a href="event-1-without-sidebar.html">
-                                      list without sidebar
-                                    </a>
-                                  </li>
-                                </ul> */}
-                              {/* </li> */}
-                              {/* <li className="menu-item-has-children">
-                                <a href="event-2.html">event Grid</a>
-                                <ul className="sub-menu">
-                                  <li>
-                                    <a href="event-2-without-sidebar.html">
-                                      grid without sidebar
-                                    </a>
-                                  </li>
-                                </ul>
-                              </li> */}
-                              {/* <li>
-                                <a href="event-details.html">event details</a>
-                              </li> */}
-                              {/* <li>
-                                <a href="booking.html">event booking</a>
-                              </li> */}
                             </ul>
                           </li>
-                          {/* <li className="menu-item-has-children">
-                            <a href="#!">blogs</a>
-                            <ul className="sub-menu"> */}
-                              {/* <li>
-                                <a href="blog.html">blog</a>
-                              </li> */}
-                              {/* <li>
-                                <a href="blog-details.html">blog details</a>
-                              </li> */}
-                            {/* </ul>
-                          </li> */}
-                          {/* <li>
-                            <a href="gallery.html">Gallery</a>
-                          </li> */}
-                          {/* <li>
-                            <a href="speaker.html">speaker</a>
-                          </li> */}
                           <li className="menu-item-has-children">
-                            <a href="#!">contact</a>
-                            <ul className="sub-menu">
-                              <li>
-                                <a href="contact.html">contact us</a>
-                              </li>
-                              {/* <li>
-                                <a href="404-error.html">404 Error</a>
-                              </li> */}
-                            </ul>
+                            <Link to="/About">About</Link>
+                          </li>
+                          <li className="menu-item-has-children">
+                            <Link to="/Contact">Contact</Link>
                           </li>
                         </ul>
                       </div>

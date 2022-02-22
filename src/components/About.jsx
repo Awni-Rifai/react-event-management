@@ -7,7 +7,7 @@ function About() {
         	{/* <!-- breadcrumb-section - start */}
 		{/* ================================================== --> */}
 		<section id="breadcrumb-section" className="breadcrumb-section clearfix">
-			<div className="jarallax" style={{backgroundImage: 'url(assets/images/breadcrumb/0.breadcrumb-bg.jpg)'}}>
+			<div className="jarallax" style={{backgroundColor: '#333333'}}>
 				<div className="overlay-black">
 					<div className="container">
 						<div className="row justify-content-center">
@@ -23,7 +23,7 @@ function About() {
 								{/* <!-- breadcrumb-list - start --> */}
 								<div className="breadcrumb-list">
 									<ul>
-										<li className="breadcrumb-item"><a href="index-1.html" className="breadcrumb-link">Home</a></li>
+										<li className="breadcrumb-item"><Link to="/" className="breadcrumb-link">Home</Link></li>
 										<li className="breadcrumb-item active" aria-current="page">about us</li>
 									</ul>
 								</div>
@@ -49,7 +49,7 @@ function About() {
 				<div className="row">
 
 					{/* <!-- section-title - start --> */}
-					<div className="col-lg-4 col-md-12 col-sm-12">
+					<div className="col-lg-4 col-md-12 col-sm-12 mt-5">
 						<div className="section-title text-left mb-50 sr-fade1">
 							<small className="sub-title">we are harmoni</small>
 							<h2 className="big-title"><strong>No.1</strong> Events Management</h2>
@@ -60,7 +60,7 @@ function About() {
 					</div>
 					{/* <!-- section-title - end --> */}
 
-					<div className="col-lg-8 col-md-12 col-sm-12">
+					<div className="col-lg-8 col-md-12 col-sm-12 mt-5">
 						<div className="row">
 
 							{/* <!-- management-item - start --> */}
@@ -92,13 +92,13 @@ function About() {
 										</h3>
 									</div>
 									<p className="black-color mb-30">
-										Lorem ipsum dollor site amet the best  consectuer adipiscing elites sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat insignia the consectuer adipiscing elit.
-									</p>
+									Hybrid events can take on a variety of formats and may include live onstage sessions and broadcasts, on-demand presentations, real time Q&A for all attendee types, differing physical and virtual breakout sessions, engagement apps, social media integrations, to list just a few. Combining our expertise.									</p>
 									<p className="black-color m-0">
 										<strong>
 											<i>
-												Lorem ipsum dollor site amet the best  consectuer adipiscing elites sed diam nonummy nibh euismod.
-											</i>	
+											Hybrid events are an exciting way to engage with your audiences like never before and offer an array of opportunities for your consumers to learn and engage. So contact us today for more information on how we can support you in your planning. Email us or call on +44 (0)330 460 6007.
+
+</i>	
 										</strong>
 									</p>
 								</div>

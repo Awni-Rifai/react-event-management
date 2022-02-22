@@ -17,17 +17,16 @@ function Home() {
     <div>
         {/* <Header/> */}
         <Slider/>
-       <EventAdvertisement/>
-       <AboutHome/>
-       <EventGalleryHome/>
+      
+      
+       {/* <EventGalleryHome/> */}
        <EventExpertiseHome/>
-       <SpeakerHome/>
-       <TestoHome/>
-       <OffersHome/>
-       <EventsHome/>
-       <NewsHome/>
-       <SponserHome/>
-       <MapHome/>
+       <AboutHome/>
+      
+       {/* <EventsHome/> */}
+      
+      
+    
     </div>
   )
 }

@@ -80,7 +80,7 @@ function Header({loggedIn}) {
                             <a href="/">Home</a>
                           </li>
                           <li className="menu-item-has-children">
-                            <a href="About">about</a>
+                            <Link to="/About">about</Link>
                             {/* <ul className="sub-menu">
 														<li><a href="about.html">about us</a></li>
 														<li><a href='service.html'>service</a></li>
@@ -106,18 +106,18 @@ function Header({loggedIn}) {
 														<li><a href='booking.html'>event booking</a></li>
 													</ul>
 												</li> */}
-                          <li className="menu-item-has-children">
-                            <a href="Booking">Booking</a>
+                          {/* <li className="menu-item-has-children">
+                            <a href="Booking">Booking</a> */}
                             {/* <ul className="sub-menu">
 														<li><a href='blog.html'>blog</a></li>
 														<li><a href='blog-details.html'>blog details</a></li>
 													</ul> */}
-                          </li>
-                          <li>
+                          {/* </li> */}
+                          {/* <li>
                             <a href="detailes">Event Detailes</a>
-                          </li>
+                          </li> */}
                           <li>
-                            <a href="List">Events List</a>
+                            <Link to="/List">Events </Link>
                           </li>
                           {/* <li className="menu-item-has-children">
 													<a href="#!">contact</a>
@@ -347,12 +347,12 @@ function Header({loggedIn}) {
                   </a>
                 </li> */}
                 <li>
-                  <a href="contact.html">
-                    <span className="icon">
+                  <Link to="/Contact">
+                    {/* <span className="icon">
                       <i className="fas fa-home"></i>
-                    </span>
+                    </span> */}
                     contact us
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

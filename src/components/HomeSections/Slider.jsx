@@ -1,8 +1,10 @@
-import React from 'react'
+
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import { options } from '../../carouselOptions';
+import React,{ useState,useEffect, Fragment } from 'react';
+import {Link} from "react-router-dom";
 
 function Slider() {
   return (
@@ -77,17 +79,18 @@ function Slider() {
 							{/* <!-- reg-form - end --> */}
 
 							{/* <!-- slider-content - start --> */}
-							<div className="col-lg-8 col-md-12 col-sm-12">
-								<div className="slider-content">
+							<div className="col-lg-8 col-md-12 col-sm-12" style={{ marginTop:'15%' }}>
+								<div className="slider-content mt-5">
 									<div className="countdown-timer mb-50">
 										<ul className="countdown-list" data-countdown="2020/08/08"></ul>
 									</div>
-									<span className="date">26 december 2019</span>
+									<span className="date"></span>
 									<h1 className="title-text">
-										AMSTERDAM
+										
 									</h1>
-									<strong className="bold-text">PHP CONFERENCE</strong>
-									<a href="#!" className="details-btn">event details</a>
+									<div className="mt-5"></div>
+									<strong className="bold-text"></strong>
+									<Link to="/List" className="details-btn mt-5">View All Gallery</Link>
 								</div>
 							</div>
 							{/* <!-- slider-content - end --> */}
