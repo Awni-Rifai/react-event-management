@@ -8,6 +8,7 @@ import Booking from "./components/Booking";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import HeaderHome from "./components/HomeSections/Header";
+import BookingSuccesFull from "./components/BookingSuccesFull";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import { useEffect, useState } from "react";
@@ -20,7 +21,10 @@ function App() {
   const [loggedIn,setLoggedIn]=useState(false);
   useEffect(()=>{
     onAuthStateChanged(auth, (user) => {
-      if (user) setLoggedIn(true);
+      if (user) {
+        setLoggedIn(true);
+        localStorage.setItem('userId',user.uid)
+      }
       else setLoggedIn(false);
     });
 
@@ -47,6 +51,7 @@ function App() {
           <Route path="/Booking" element={<Booking />} />
           <Route path="/About" element={<About />} />
           <Route path="/Contact" element={<Contact />} />
+          <Route path="/Success" element={<BookingSuccesFull />} />
         </Routes>
         <Footer />
       
