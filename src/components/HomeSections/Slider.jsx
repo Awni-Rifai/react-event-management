@@ -50,7 +50,7 @@ function Slider() {
 						<div className="row">
 
 							{/* <!-- reg-form - start --> */}
-							<div className="col-lg-4 col-md-12 col-sm-12">
+							{/* <div className="col-lg-4 col-md-12 col-sm-12">
 								<div className="reg-form">
 
 									<div className="from-title">
@@ -97,7 +97,7 @@ function Slider() {
 									<button type="submit" className="submit-btn">register now</button>
 									
 								</div>
-							</div>
+							</div> */}
 							{/* <!-- reg-form - end --> */}
 
 							{/* <!-- slider-content - start --> */}

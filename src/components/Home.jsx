@@ -30,12 +30,12 @@ function Home() {
        <EventGalleryHome/>
        <EventExpertiseHome/>
        <SpeakerHome/>
-       <TestoHome/>
+       {/* <TestoHome/>
        <OffersHome/>
        <EventsHome/>
        <NewsHome/>
        <SponserHome/>
-       <MapHome/>
+       <MapHome/> */}
     </div>
   )
 }
