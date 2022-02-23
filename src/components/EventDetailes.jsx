@@ -6,8 +6,10 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
 import { options } from '../carouselOptions';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function EventDetailes() {
+	const navigate=useNavigate();
 
 	let  [myevent, setMyevent] = useState([]);
 	useEffect(()=>{
@@ -25,7 +27,16 @@ function EventDetailes() {
 	// console.log('name',event.name);
 
 	},[]);
+   const bookEvent=(e)=>{
+	   e.preventDefault();
+	   // add booking to the database
 
+
+	   //-----------------------------------
+	   navigate('/Success')
+
+
+   }
 	
 	// console.log('111111 event',myevent);
 	// console.log('22222 eventId ',eventId)
@@ -174,7 +185,7 @@ function EventDetailes() {
 									</ul>
 								</div>
 								<div className="button">
-									<a href="/Booking" className="custom-btn">Book Ticket Now</a>
+									<a onClick={bookEvent} className="custom-btn">Book Ticket Now</a>
 								</div>
 						
 						
