@@ -1,6 +1,23 @@
-import React from 'react'
-
+import React, { useEffect } from 'react'
+import { useState} from 'react';
+import axios from 'axios';
+import Guest from './Guest';
 function Booking() {
+const [id,setId]=useState(localStorage.getItem('event_id'));
+const [[event],setEvent] = useState(JSON.parse(localStorage.getItem('events')).filter(item=>item.id===id));
+let [isLogged,setIsLogged]=useState(localStorage.getItem('prevUrl')?localStorage.getItem('prevUrl'):0);
+
+	const bookHandle = ()=>{
+		let fd = new FormData();
+    fd.append("user_id", 1);
+    fd.append("event_id", localStorage.getItem("event_id"));
+    
+
+    axios.post("http://localhost/book-log.php", fd);
+	}
+
+// const [event,setEvent]	= useState(event);
+
 
   return (
     <div>
@@ -98,34 +115,28 @@ function Booking() {
 								{/* <!-- section-title - end --> */}
 								<div className="order-summary-table table-responsive">
 
-									<table className="table text-center">
+									<table className="table text-center" >
 										<thead>
 											<tr>
-												<th scope="col">ticket type</th>
-												<th scope="col">price</th>
-												<th scope="col">fee</th>
-												<th scope="col">quantity</th>
-												<th scope="col">subtotal</th>
+												<th scope="col" style={{idth:"33.333%"}}>Event Name</th>
+												<th scope="col" >price</th>
+												<th scope="col" >Number of Seats</th>
+												<th scope="col" >Event start Time</th>
+												<th scope="col" >Event end Time</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr className="bg-gray-light">
-												<th scope="row">Harmoni Package 1</th>
-												<td>$120.00</td>
-												<td>$5.00</td>
-												<td><input type="text" value="5"/></td>
-												<td>$675.00</td>
+											<tr className="bg-gray-light" >
+												<th scope="row" >{event.name}</th>
+												<td >${event.price}</td>
+												<td>{event.seat}</td>
+												<td>{event.start_time}</td>
+												<td>{event.end_time}</td>
 											</tr>
-											<tr>
-												<th scope="row">Harmoni Package 2</th>
-												<td>$120.00</td>
-												<td>$5.00</td>
-												<td><input type="text" value="5"/></td>
-												<td>$675.00</td>
-											</tr>
+											
 											<tr className="tfooter">
 												<th colspan="4" className="text-left">order total</th>
-												<td>$2,575.00</td>
+												<td>${event.price}</td>
 											</tr>
 										</tbody>
 									</table>
@@ -133,113 +144,8 @@ function Booking() {
 								</div>
 							</div>
 							{/* <!-- order-summary - end --> */}
+{isLogged===0?<Guest/>:""}
 
-
-
-							{/* <!-- reg-info - start --> */}
-							<div className="reg-info mb-50">
-
-								{/* <!-- section-title - start --> */}
-								<div className="section-title mb-30">
-									<h2 className="big-title">registration <strong>information</strong></h2>
-								</div>
-								{/* <!-- section-title - end --> */}
-
-								{/* <!-- row - start --> */}
-								<div className="row">
-
-									{/* <!-- ticket-buying-form - start --> */}
-									<div className="col-lg-6 col-md-6 col-sm-12">
-										<div className="ticket-buying-form form-wrapper">
-											<h3 className="form-title">ticket buyer</h3>
-
-											<form action="#">
-												<div className="form-item">
-													<input type="text" placeholder="First Name"/>
-												</div>
-												<div className="form-item">
-													<input type="text" placeholder="Last Name"/>
-												</div>
-												<div className="form-item">
-													<input type="email" placeholder="Email Address"/>
-												</div>
-												<div className="form-item">
-													<input type="email" placeholder="Confirm Email Address"/>
-												</div>
-											</form>
-
-										</div>
-									</div>
-									{/* <!-- ticket-buying-form - end --> */}
-
-									{/* <!-- payment-form - start --> */}
-									<div className="col-lg-6 col-md-6 col-sm-12">
-										<div className="payment-form form-wrapper">
-											<h3 className="form-title">payment</h3>
-
-											<form action="#">
-												<div className="form-item">
-													<select className="cradit-card-select">
-														<option selected="">Select Credit Card</option>
-														<option>option 1</option>
-														<option>option 2</option>
-														<option>option 3</option>
-														<option>option 4</option>
-														<option>option 5</option>
-													</select>
-												</div>
-												<div className="form-item">
-													<input type="text" placeholder="Card Numbers"/>
-												</div>
-
-												<div className="expired-date-form">
-													<h3 className="title-text">expired date</h3>
-													<ul>
-
-														<li>
-															<div className="form-item">
-																<select className="month-select">
-																	<option selected="">Month</option>
-																	<option>option 1</option>
-																	<option>option 2</option>
-																	<option>option 3</option>
-																	<option>option 4</option>
-																	<option>option 5</option>
-																</select>
-															</div>
-														</li>
-
-														<li>
-															<div className="form-item">
-																<select className="year-select">
-																	<option selected="">Year</option>
-																	<option>option 1</option>
-																	<option>option 2</option>
-																	<option>option 3</option>
-																	<option>option 4</option>
-																	<option>option 5</option>
-																</select>
-															</div>
-														</li>
-
-														<li>
-															<div className="form-item">
-																<input type="text" placeholder="CSC"/>
-															</div>
-														</li>
-
-													</ul>
-												</div>
-											</form>
-										</div>
-									</div>
-									{/* <!-- payment-form - end --> */}
-
-								</div>
-								{/* <!-- row - end --> */}
-
-							</div>
-							{/* <!-- reg-info - end --> */}
 
 
 
@@ -248,69 +154,19 @@ function Booking() {
 
 								{/* <!-- section-title - start --> */}
 								<div className="section-title mb-30">
-									<h2 className="big-title">billing <strong>information</strong></h2>
+									<h2 className="big-title">if you are <strong>logged in</strong></h2>
 								</div>
 								{/* <!-- section-title - end --> */}
 
 								{/* <!-- billing-form - start --> */}
 								<div className="billing-form form-wrapper">
-									<form action="#">
-
-										<div className="form-item">
-											<select className="country-select">
-												<option selected="">Select Country</option>
-												<option>option 1</option>
-												<option>option 2</option>
-												<option>option 3</option>
-												<option>option 4</option>
-												<option>option 5</option>
-											</select>
-										</div>
-										<div className="form-item">
-											<input type="text" placeholder="Address"/>
-										</div>
-										<div className="form-item">
-											<input type="text" placeholder="Altranative Address"/>
-										</div>
-
-										{/* <!-- form-item-group - start --> */}
-										<div className="form-item-group mb-50">
-											<ul>
-
-												<li>
-													<div className="form-item">
-														<input type="text" placeholder="City"/>
-													</div>
-												</li>
-												<li>
-													<div className="form-item">
-														<select className="country-select">
-															<option selected="">States</option>
-															<option>option 1</option>
-															<option>option 2</option>
-															<option>option 3</option>
-															<option>option 4</option>
-															<option>option 5</option>
-														</select>
-													</div>
-												</li>
-												<li>
-													<div className="form-item">
-														<input type="text" placeholder="Zip Code"/>
-													</div>
-												</li>
-												
-											</ul>
-										</div>
-										{/* <!-- form-item-group - end --> */}
-
 										<div className="text-center">
-											<button type="submit" className="custom-btn">
+											<button type="button" className="custom-btn" onClick={bookHandle}>
 												pay now
 											</button>
 										</div>
 
-									</form>
+									
 								</div>
 								{/* <!-- billing-form - end --> */}
 

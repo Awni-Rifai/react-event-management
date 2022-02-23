@@ -174,7 +174,7 @@ function EventDetailes() {
 									</ul>
 								</div>
 								<div className="button">
-									<a href="#!" className="custom-btn">Book Ticket Now</a>
+									<a href="/Booking" className="custom-btn">Book Ticket Now</a>
 								</div>
 						
 						

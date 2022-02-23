@@ -9,7 +9,7 @@ function EventsList() {
 	  const fetchData = async () =>{
 	
 		try {
-		  const {data: response} = await axios.get('http://localhost/event_managments_mySql/event.php');
+		  const {data: response} = await axios.get('http://localhost/event.php');
 		  setData(response);
 
 		} catch (error) {
