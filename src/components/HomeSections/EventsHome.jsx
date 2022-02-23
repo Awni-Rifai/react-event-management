@@ -1,6 +1,34 @@
-import React from 'react'
+import React,{ useState,useEffect, Fragment } from 'react';
+import {Link} from "react-router-dom";
+import axios from 'axios';
 
 function EventsHome() {
+
+	const [data, setData] = useState([])
+  
+	useEffect(() => {
+	  const fetchData = async () =>{
+	
+		try {
+		  const {data: response} = await axios.get('http://localhost/event_managments_mySql/event.php');
+		  setData(response);
+
+		} catch (error) {
+		  console.error(error.message);
+		}
+	  }
+  
+	  fetchData();
+	 
+	}, []);
+	const goDetails = (id)=>{
+		localStorage.setItem('event_id',id);
+	   localStorage.setItem('events',JSON.stringify(data));
+	   
+	  
+		console.log(localStorage.getItem('event_id'))
+		  }
+
   return (
     <div>
 {/*         
@@ -25,28 +53,7 @@ function EventsHome() {
 						{/* <!-- event-tab-menu - start --> */}
 						<div className="col-lg-8 col-md-12 col-sm-12">
 							<div className="event-tab-menu clearfix">
-								<ul className="nav">
-									<li>
-										<a data-toggle="tab" href="#conference-event">
-											<strong><i className="fas fa-microphone"></i> conference</strong> event
-										</a>
-									</li>
-									<li>
-										<a data-toggle="tab" href="#playground-event">
-											<strong><i className="fas fa-birthday-cake"></i> play ground</strong> event
-										</a>
-									</li>
-									<li>
-										<a className="active" data-toggle="tab" href="#musical-event">
-											<strong><i className="fas fa-music"></i> musical</strong> event
-										</a>
-									</li>
-									<li>
-										<a data-toggle="tab" href="#other-event">
-											<strong><i className="far fa-check-square"></i> other</strong> event
-										</a>
-									</li>
-								</ul>
+							
 							</div>
 						</div>
 						{/* <!-- event-tab-menu - end --> */}
@@ -62,6 +69,7 @@ function EventsHome() {
 						<div className="row">
 
 							{/* {/*<!-- event-item - start -->*/} 
+							
 							<div className="col-lg-4 col-md-6 col-sm-12">
 								<div className="event-item2 clearfix">
 
@@ -1291,23 +1299,7 @@ function EventsHome() {
 							</div>
 							{/*<!-- event-item - end -->*/}
 
-							<div className="col-lg-12 col-md-12 col-sm-12">
-								<div className="pagination ul-li clearfix">
-									<ul>
-										<li className="page-item prev-item">
-											<a className="page-link" href="#">Prev</a>
-										</li>
-										<li className="page-item"><a className="page-link" href="#">01</a></li>
-										<li className="page-item active"><a className="page-link" href="#">02</a></li>
-										<li className="page-item"><a className="page-link" href="#">03</a></li>
-										<li className="page-item"><a className="page-link" href="#">04</a></li>
-										<li className="page-item"><a className="page-link" href="#">05</a></li>
-										<li className="page-item next-item">
-											<a className="page-link" href="#">Next</a>
-										</li>
-									</ul>
-								</div>
-							</div>
+							
 
 						</div>
 					</div>

@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import './Slider.css';
 import { options } from '../../carouselOptions';
+import React,{ useState,useEffect, Fragment } from 'react';
+import {Link} from "react-router-dom";
 
 function Slider() {
 	const [backgroundUrl,setBackgroundUrl]=useState("url(assets/images/slider/slider-bg4.jpg)")

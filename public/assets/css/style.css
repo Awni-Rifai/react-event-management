@@ -2235,10 +2235,10 @@ button {
         font-size: 18px;
         text-transform: uppercase; }
   .sidebar-section .location-wrapper .location-info-list {
-    padding: 30px; }
+    padding: 20px; }
     .sidebar-section .location-wrapper .location-info-list .area-name {
       font-weight: 700;
-      padding: 10px 30px;
+      padding: 10px 20px;
       border-radius: 3px;
       text-align: center;
       color: #ffbe30;
@@ -2257,7 +2257,7 @@ button {
         .sidebar-section .location-wrapper .location-info-list ul li i {
           color: #ffbe30; }
   .sidebar-section .location-wrapper .button {
-    padding: 30px;
+    padding: 20px;
     padding-top: 0px;
     border-bottom: 1px solid #f0f0f0; }
   .sidebar-section .location-wrapper .custom-btn {
@@ -6082,7 +6082,7 @@ button {
 
 .event-details-section .event-details .event-info-list ul {
   width: 100%;
-  display: table; }
+  display: flex; }
   .event-details-section .event-details .event-info-list ul li {
     width: 32.9%;
     padding: 15px;
@@ -6331,6 +6331,13 @@ button {
   overflow: hidden;
   border-radius: 3px;
   border: 1px solid #f0f0f0; }
+  .text-break{
+    margin-top: 5%;
+    overflow-wrap: break-word;
+  }
+.sideInfo{
+margin-top: 6%;
+  }
   .event-details-section .register-wrapper .register-table ul li {
     width: 100%;
     display: table;

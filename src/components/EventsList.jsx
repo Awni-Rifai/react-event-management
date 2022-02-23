@@ -9,7 +9,7 @@ function EventsList() {
 	  const fetchData = async () =>{
 	
 		try {
-		  const {data: response} = await axios.get('http://localhost/event_managments_mySql/event.php');
+		  const {data: response} = await axios.get('http://localhost/event.php');
 		  setData(response);
 
 		} catch (error) {
@@ -50,8 +50,8 @@ function EventsList() {
 								{/* <!-- breadcrumb-list - start --> */}
 								<div className="breadcrumb-list">
 									<ul>
-										<li className="breadcrumb-item"><a href="index-1.html" className="breadcrumb-link">Home</a></li>
-										<li className="breadcrumb-item active" aria-current="page">event listing</li>
+										<li className="breadcrumb-item"><Link to="i/" className="breadcrumb-link">Home</Link></li>
+										<li className="breadcrumb-item active" aria-current="page">Events </li>
 									</ul>
 								</div>
 								{/* <!-- breadcrumb-list - end --> */}
@@ -71,22 +71,22 @@ function EventsList() {
 
 		{/* <!-- event-search-section - start */}
 		{/* ================================================== --> */}
-		<section id="event-search-section" 
+		{/* <section id="event-search-section" 
 		className="event-search-section clearfix" style={{backgroundImage: 'url(assets/images/special-offer-bg.png)'}}>
 			<div className="container">
-				<div className="row col-12">
+				<div className="row col-12"> */}
 
 					{/* <!-- section-title - start --> */}
-					<div className="col-lg-4 col-md-12 col-sm-12">
+					{/* <div className="col-lg-4 col-md-12 col-sm-12">
 						<div className="section-title">
 							<small className="sub-title">Find best event on Harmoni</small>
 							<h2 className="big-title">event <strong>Search</strong></h2>
 						</div>
-					</div>
+					</div> */}
 					{/* <!-- section-title - end --> */}
 
 					{/* <!-- search-form - start --> */}
-					<div className="col-lg-8 col-md-12 col-sm-12">
+					{/* <div className="col-lg-8 col-md-12 col-sm-12">
 						<div className="search-form form-wrapper">
 							<form action="#!">
 
@@ -105,12 +105,12 @@ function EventsList() {
 								
 							</form>
 						</div>
-					</div>
+					</div> */}
 					{/* <!-- search-form - end --> */}
-					
+{/* 					
 				</div>
 			</div>
-		</section>
+		</section> */}
 		{/* <!-- event-search-section - end */}
 		{/* ================================================== --> */}
 
@@ -132,32 +132,7 @@ function EventsList() {
 					<div className="col-lg-12 col-md-12 col-sm-12">
 
 						<div className="search-result-form">
-							<form action="#!">
-								<ul>
-
-									<li>
-										<span className="result-text">5 Search results from 20 events</span>
-									</li>
-									<li>
-										<label for="year-select">Years:</label>
-										<select id="year-select">
-											<option selected="">2018</option>
-											<option value="1">2019</option>
-											<option value="2">2020</option>
-											<option value="3">2021</option>
-										</select>
-									</li>
-									<li>
-										<label for="munth-select">Months:</label>
-										<select id="munth-select">
-											<option selected="">June</option>
-											<option value="1">July</option>
-											<option value="2">August</option>
-										</select>
-									</li>
-
-								</ul>
-							</form>
+						
 
 							<ul className="nav event-layout-btngroup">
 								<li><a className="active" data-toggle="tab" href="#list-style"><i className="fas fa-th-list"></i></a></li>
@@ -187,7 +162,7 @@ function EventsList() {
 									<div className="event-content">
 										<div className="event-title mb-15">
 											<h3 className="title">
-												Barcelona <strong><span>{item.name}</span></strong>
+												 <strong><span>{item.name}</span></strong>
 											</h3>
 											<span className="ticket-price yellow-color"><span>${item.price}</span></span>
 										</div>
@@ -201,7 +176,7 @@ function EventsList() {
 														<i className="fas fa-microphone"></i>,
 													</span>
 													<div className="info-content">
-														<small> Presented by :  </small>
+														<small> Hosted by :  </small>
 														<h3>{item.speaker}</h3>
 													</div>
 												</li>
@@ -232,7 +207,7 @@ function EventsList() {
 								
 
 								))}
-								<div className="pagination ul-li clearfix">
+								{/* <div className="pagination ul-li clearfix">
 									<ul>
 										<li className="page-item prev-item">
 											<a className="page-link" href="#!">Prev</a>
@@ -246,7 +221,7 @@ function EventsList() {
 											<a className="page-link" href="#!">Next</a>
 										</li>
 									</ul>
-								</div>
+								</div> */}
 
 							</div>
 

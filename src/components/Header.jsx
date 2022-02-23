@@ -80,7 +80,7 @@ function Header({loggedIn,logout}) {
                             <a href="/">Home</a>
                           </li>
                           <li className="menu-item-has-children">
-                            <a href="About">about</a>
+                            <Link to="/About">about</Link>
                             {/* <ul className="sub-menu">
 														<li><a href="about.html">about us</a></li>
 														<li><a href='service.html'>service</a></li>
@@ -106,18 +106,18 @@ function Header({loggedIn,logout}) {
 														<li><a href='booking.html'>event booking</a></li>
 													</ul>
 												</li> */}
-                          <li className="menu-item-has-children">
-                            <a href="Booking">Booking</a>
+                          {/* <li className="menu-item-has-children">
+                            <a href="Booking">Booking</a> */}
                             {/* <ul className="sub-menu">
 														<li><a href='blog.html'>blog</a></li>
 														<li><a href='blog-details.html'>blog details</a></li>
 													</ul> */}
-                          </li>
-                          <li>
+                          {/* </li> */}
+                          {/* <li>
                             <a href="detailes">Event Detailes</a>
-                          </li>
+                          </li> */}
                           <li>
-                            <a href="List">Events List</a>
+                            <Link to="/List">Events </Link>
                           </li>
                           {/* <li className="menu-item-has-children">
 													<a href="#!">contact</a>
@@ -237,38 +237,38 @@ function Header({loggedIn,logout}) {
             <div className="menu-link-list main-pages-links">
               <h2 className="menu-title">all home pages</h2>
               <ul>
-                <li>
+                {/* <li>
                   <a href="index-1.html">
                     <span className="icon">
                       <i className="fas fa-home"></i>
                     </span>
                     Home V.1
                   </a>
-                </li>
+                </li> */}
                 <li>
-                  <a href="index-2.html">
+                  <Link to="/">
                     <span className="icon">
                       <i className="fas fa-home"></i>
                     </span>
-                    Home V.2
-                  </a>
+                    Home 
+                  </Link>
                 </li>
-                <li>
+                {/* <li>
                   <a href="index-3.html">
                     <span className="icon">
                       <i className="fas fa-home"></i>
                     </span>
                     Home v.3
                   </a>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <a href="index-4.html">
                     <span className="icon">
                       <i className="fas fa-home"></i>
                     </span>
                     Home v.4
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
             {/* <!-- main-pages-links - end --> */}
@@ -294,68 +294,68 @@ function Header({loggedIn,logout}) {
                   </a>
                 </li>
                 <li>
-                  <a href="event-1.html">
+                  <Link to="/List">
                     <span className="icon">
                       <i className="fas fa-home"></i>
                     </span>
-                    event list
-                  </a>
+                    Events Gallery
+                  </Link>
                 </li>
-                <li>
-                  <a href="event-2.html">
+                {/* <li>
+                  <Link to="/List">
                     <span className="icon">
                       <i className="fas fa-home"></i>
                     </span>
-                    event grid
-                  </a>
-                </li>
-                <li>
+                    Events Gallery
+                  </Link>
+                </li> */}
+                {/* <li>
                   <a href="event-1-without-sidebar.html">
                     <span className="icon">
                       <i className="fas fa-home"></i>
                     </span>
                     list without sidebar
                   </a>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <a href="event-2-without-sidebar.html">
                     <span className="icon">
                       <i className="fas fa-home"></i>
                     </span>
                     grid without sidebar
                   </a>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <a href="blog.html">
                     <span className="icon">
                       <i className="fas fa-home"></i>
                     </span>
                     Latest blogs
                   </a>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <a href="gallery.html">
                     <span className="icon">
                       <i className="fas fa-home"></i>
                     </span>
                     our gallery
                   </a>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <a href="speaker.html">
                     <span className="icon">
                       <i className="fas fa-home"></i>
                     </span>
                     event speakers
                   </a>
-                </li>
+                </li> */}
                 <li>
-                  <a href="contact.html">
-                    <span className="icon">
+                  <Link to="/Contact">
+                    {/* <span className="icon">
                       <i className="fas fa-home"></i>
-                    </span>
+                    </span> */}
                     contact us
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -365,46 +365,46 @@ function Header({loggedIn,logout}) {
             <div className="menu-link-list inner-pages-links">
               <h2 className="menu-title">all inner pages</h2>
               <ul>
-                <li>
+                {/* <li>
                   <a href="booking.html">
                     <span className="icon">
                       <i className="fas fa-home"></i>
                     </span>
                     event booking
                   </a>
-                </li>
-                <li className="active">
+                </li> */}
+                {/* <li className="active">
                   <a href="event-details.html">
                     <span className="icon">
                       <i className="fas fa-home"></i>
                     </span>
                     event details
                   </a>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <a href="blog-details.html">
                     <span className="icon">
                       <i className="fas fa-home"></i>
                     </span>
                     blog details
                   </a>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <a href="faq.html">
                     <span className="icon">
                       <i className="fas fa-home"></i>
                     </span>
                     Frequently Ask Qusetion
                   </a>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <a href="404-error.html">
                     <span className="icon">
                       <i className="fas fa-home"></i>
                     </span>
                     404 error
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
             {/* <!-- inner-pages-links - end --> */}

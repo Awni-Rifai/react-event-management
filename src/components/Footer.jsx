@@ -38,9 +38,9 @@ function footer() {
 										<li>
 											<a href="#!"><i className="fab fa-twitter"></i></a>
 										</li>
-										<li>
+										{/* <li>
 											<a href="#!"><i className="fab fa-twitch"></i></a>
-										</li>
+										</li> */}
 										<li>
 											<a href="#!"><i className="fab fa-google-plus-g"></i></a>
 										</li>
@@ -67,8 +67,8 @@ function footer() {
 												<i className="fas fa-map-marker-alt"></i>
 											</span>
 											<div className="info-content">
-												<p>100 highland ave,</p>
-												<h3>california, united state</h3>
+												<p>Our Location</p>
+												<h3>Amman, Jordan</h3>
 											</div>
 										</div>
 									</div>
@@ -81,8 +81,8 @@ function footer() {
 												<i className="fas fa-envelope"></i>
 											</span>
 											<div className="info-content">
-												<p><a href="#!">contact@pantero.com</a></p>
-												<h3><a href="#!">info@harmoni.com</a></h3>
+												<p><a href="#!">Via Email</a></p>
+												<h3><a href="#!">Harmoni@gmail.com</a></h3>
 											</div>
 										</div>
 									</div>
@@ -95,8 +95,8 @@ function footer() {
 												<i className="fas fa-phone"></i>
 											</span>
 											<div className="info-content">
-												<p><a href="#!">100 800 1234 5555</a></p>
-												<h3><a href="#!">100 800 1234 5555</a></h3>
+												<p><a href="#!">Via Mobile</a></p>
+												<h3><a href="#!">+962 - 777 77 777 7 </a></h3>
 											</div>
 										</div>
 									</div>
@@ -112,20 +112,20 @@ function footer() {
 			</div>
 			{/* <!-- footer-top - end --> */}
 
-			<div className="footer-bottom">
+			{/* <div className="footer-bottom">
 				<div className="container">
-					<div className="row">
+					<div className="row"> */}
 
 						{/* <!-- copyright-text - start --> */}
-						<div className="col-lg-7 col-md-12 col-sm-12">
+						{/* <div className="col-lg-7 col-md-12 col-sm-12">
 							<div className="copyright-text">
 								<p className="m-0">©2018 <a href="#!" className="site-link">Harmoni.com</a> all right reserved, made with <i className="fas fa-heart"></i> by <a href="#!" className="author-link"><strong>jThemes Studio</strong></a></p>
 							</div>
-						</div>
+						</div> */}
 						{/* <!-- copyright-text - end --> */}
 
 						{/* <!-- footer-menu - start --> */}
-						<div className="col-lg-5 col-md-12 col-sm-12">
+						{/* <div className="col-lg-5 col-md-12 col-sm-12">
 							<div className="footer-menu">
 								<ul>
 									<li><a href="contact.html">Contact us</a></li>
@@ -134,12 +134,12 @@ function footer() {
 									<li><a href="#!">Privacy policy</a></li>
 								</ul>
 							</div>
-						</div>
+						</div> */}
 						{/* <!-- footer-menu - end --> */}
-
+{/* 
 					</div>
 				</div>
-			</div>
+			</div> */}
 
 		</footer>
 		{/* <!-- footer-section3 - end

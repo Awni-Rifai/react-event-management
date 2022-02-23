@@ -9,7 +9,7 @@ import { useState } from 'react';
 
 function EventDetailes() {
 
-	let  [myevent, setMyevent] = useState('');
+	let  [myevent, setMyevent] = useState([]);
 	useEffect(()=>{
 		window.scroll(0,-400);
 
@@ -82,23 +82,32 @@ function EventDetailes() {
 							</div>
 
 							<div id="event-details-carousel" className="event-details-carousel  owl-theme">
-							<OwlCarousel
- items={1}
- className="owl-theme"
- loop
- margin={10}
- nav
- {...{...options,autoplay:true}}
- 
->
-<div className="item">
-									<img src={myevent.image} alt="Image_not_found"/>
-								</div>
-								
-								{/* <div className="item">
-									<img src={myevent.image3} alt="Image_not_found"/>
-								</div> */}
-	</OwlCarousel>
+{
+	myevent.length != 0 && 							<OwlCarousel
+	items={1}
+	className="owl-theme"
+	loop
+	margin={10}
+	nav
+	{...{...options,autoplay:true}}
+	
+   >
+   <div className="item">
+									   <img src={myevent.image} alt="Image_not_found"/>
+									   {console.log(myevent.image)}
+								   </div>
+								   <div className="item">
+									   <img src={myevent.image2} alt="Image_not_found"/>
+									   {console.log(myevent.image3)}
+								   </div>
+								   <div className="item">
+									   <img src={myevent.image3} alt="Image_not_found"/>
+									   
+									   {console.log(myevent.image2)}
+								   
+								   </div>
+	   </OwlCarousel>
+}
 								
 							</div>
 
@@ -158,14 +167,14 @@ function EventDetailes() {
 								<div className="location-info-list ul-li-block clearfix mb-1">
 									<span className="area-name">{myevent.location}</span>
 									<ul>
-										<li><i className="fas fa-arrow-circle-right"></i> Presented By: <strong> {myevent.speaker}</strong></li>
+										<li><i className="fas fa-arrow-circle-right"></i> Hosted By: <strong> {myevent.speaker}</strong></li>
 										<li><i className="fas fa-arrow-circle-right"></i> {myevent.event_time}</li>
 										<li><i className="fas fa-arrow-circle-right"></i> From <strong>{myevent.start_time}</strong> to <strong>{myevent.end_time}</strong> (EST)</li>
 
 									</ul>
 								</div>
 								<div className="button">
-									<a href="#!" className="custom-btn">ADD TO MY CALENDAR</a>
+									<a href="/Booking" className="custom-btn">Book Ticket Now</a>
 								</div>
 						
 						
